@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (5.2.2)
+  - iOSDropDown (0.3.4)
+  - Segmentio (4.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.2.2)
+  - iOSDropDown
+  - Segmentio
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - iOSDropDown
+    - Segmentio
+
+SPEC CHECKSUMS:
+  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
+  Segmentio: ab29def64e1bff6e6e9b97671788a99bed3f1d9f
+
+PODFILE CHECKSUM: 740e76576b589f0c26606de1339d4f44e02934d4
+
+COCOAPODS: 1.9.1

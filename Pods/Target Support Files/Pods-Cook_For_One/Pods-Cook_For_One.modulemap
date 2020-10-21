@@ -1,0 +1,6 @@
+framework module Pods_Cook_For_One {
+  umbrella header "Pods-Cook_For_One-umbrella.h"
+
+  export *
+  module * { export * }
+}

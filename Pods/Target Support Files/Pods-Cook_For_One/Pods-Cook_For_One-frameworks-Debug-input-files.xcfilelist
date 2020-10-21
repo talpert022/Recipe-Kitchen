@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-Cook_For_One/Pods-Cook_For_One-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework
+${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework

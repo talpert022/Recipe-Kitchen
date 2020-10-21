@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "SHOPPING_CAT.1-ELECTRONIC-EXPANDED-COLOR-64PX_tools_electricity_home_fridge_refrigerator_ice_box-512.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
