@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,9 +19,6 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WKq-p7-JAB">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="236"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="236" id="cq3-V3-pMQ"/>
-                        </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jQz-H2-Qpk">
                         <rect key="frame" x="8" y="273.5" width="15" height="19"/>
@@ -72,39 +70,37 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipe Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BoH-Nd-ux7">
-                        <rect key="frame" x="8" y="237" width="188" height="38"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="188" id="4Rq-hE-4i4"/>
-                            <constraint firstAttribute="height" constant="38" id="YQn-pV-282"/>
-                        </constraints>
+                        <rect key="frame" x="8" y="241" width="184" height="28"/>
                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                         <color key="textColor" red="0.64313725490196072" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="AXR-TT-eIQ" secondAttribute="bottom" constant="6.5" id="1Qq-1t-B7i"/>
                 <constraint firstAttribute="trailing" secondItem="ndp-PJ-oEt" secondAttribute="trailing" constant="7" id="8hD-pC-g4O"/>
-                <constraint firstItem="BoH-Nd-ux7" firstAttribute="top" secondItem="ndp-PJ-oEt" secondAttribute="bottom" constant="8" id="AjS-JP-ZwC"/>
+                <constraint firstAttribute="trailing" secondItem="BoH-Nd-ux7" secondAttribute="trailing" constant="8" id="Dfq-fW-ZkC"/>
                 <constraint firstItem="WKq-p7-JAB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Jff-s6-Haj"/>
+                <constraint firstItem="jQz-H2-Qpk" firstAttribute="top" secondItem="BoH-Nd-ux7" secondAttribute="bottom" constant="4" id="Lcy-Si-jLe"/>
                 <constraint firstAttribute="bottom" secondItem="jQz-H2-Qpk" secondAttribute="bottom" constant="7" id="N4H-2N-U7E"/>
                 <constraint firstItem="BoH-Nd-ux7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Pp3-eg-Lkx"/>
                 <constraint firstAttribute="trailing" secondItem="AXR-TT-eIQ" secondAttribute="trailing" id="UfH-yB-Nxm"/>
                 <constraint firstAttribute="bottom" secondItem="Kes-kv-Hob" secondAttribute="bottom" constant="9" id="WxU-v1-YgA"/>
-                <constraint firstItem="ndp-PJ-oEt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="194" id="ZQu-dl-V5b"/>
                 <constraint firstItem="WKq-p7-JAB" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="Zes-bI-stq"/>
                 <constraint firstItem="AXR-TT-eIQ" firstAttribute="leading" secondItem="Kes-kv-Hob" secondAttribute="trailing" constant="13" id="acN-tD-Cyf"/>
                 <constraint firstAttribute="trailing" secondItem="dAP-NM-705" secondAttribute="trailing" constant="74" id="c1E-ww-86L"/>
+                <constraint firstAttribute="trailing" secondItem="ndp-PJ-oEt" secondAttribute="trailing" constant="7" id="coQ-Ox-GHm"/>
                 <constraint firstAttribute="trailing" secondItem="WKq-p7-JAB" secondAttribute="trailing" id="ehL-3G-mBH"/>
-                <constraint firstAttribute="bottom" secondItem="BoH-Nd-ux7" secondAttribute="bottom" constant="25" id="ghX-Lr-pHN"/>
                 <constraint firstItem="dAP-NM-705" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="jEL-Qe-2lh"/>
                 <constraint firstItem="dAP-NM-705" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="k5o-Wu-43E"/>
-                <constraint firstItem="ndp-PJ-oEt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="158" id="pPp-O3-rDz"/>
+                <constraint firstItem="ndp-PJ-oEt" firstAttribute="bottom" secondItem="WKq-p7-JAB" secondAttribute="bottom" constant="-7" id="knE-TC-PLD"/>
+                <constraint firstAttribute="bottom" secondItem="WKq-p7-JAB" secondAttribute="bottom" constant="64" id="p8v-lN-Eet"/>
+                <constraint firstItem="BoH-Nd-ux7" firstAttribute="top" secondItem="WKq-p7-JAB" secondAttribute="bottom" constant="5" id="vBR-LI-9By"/>
                 <constraint firstItem="Kes-kv-Hob" firstAttribute="leading" secondItem="jQz-H2-Qpk" secondAttribute="trailing" constant="4" id="xCu-pc-hzv"/>
                 <constraint firstItem="WKq-p7-JAB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yaT-P6-HUW"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="188" height="274"/>
             <connections>
                 <outlet property="cookTime" destination="Kes-kv-Hob" id="5CJ-Mc-FTt"/>

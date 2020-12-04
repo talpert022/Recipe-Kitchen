@@ -27,6 +27,11 @@ class recipeCell: UICollectionViewCell {
         // Initialization code
     }
     
+    /*
+     ----------
+     Sets properties for recipe cell before displaying and fetches image from edamin api
+     ----------
+     */
     func displayRecipe(_ recipe: Recipe) {
         
         // Clean up the cell before dipslaying
@@ -102,6 +107,7 @@ class recipeCell: UICollectionViewCell {
         dataTask.resume()
     }
 
+//MARK: - Helpers
 func customizeCell() {
     
     // Save Button Set Up
@@ -120,7 +126,7 @@ func customizeCell() {
     healthLabel.textColor = UIColor.green.darker()
     
 }
-
+//MARK: - Actions
 @IBAction func saveButtonPressed(_ sender: Any) {
     
     if saveButton.isSelected == false {
