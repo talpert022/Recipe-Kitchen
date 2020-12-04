@@ -2,9 +2,9 @@
 
 Cook For One is an iOS app, written in Swift, that allows you to add ingredients, check expiration dates, and get recipes for the food in your kitchen. 
 
-* [Screenshots] (#Screenshots)
-* [Description] (#Description)
-* [What I learned] (#What-I-learned)
+- [Screenshots](#Screenshots)
+- [Description](#Description)
+- [What I learned](#What-I-learned)
 
 Screenshots
 ------------
