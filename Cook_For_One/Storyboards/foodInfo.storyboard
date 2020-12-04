@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f7e-SV-EUM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f7e-SV-EUM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -70,7 +72,7 @@
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -86,7 +88,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5w-HG-4Q5">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5w-HG-4Q5">
                                 <rect key="frame" x="302" y="114" width="112" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="25R-Z7-bzJ"/>
@@ -108,7 +110,7 @@
                                 <rect key="frame" x="0.0" y="144" width="414" height="61"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CA1-hf-YLf" customClass="addButton" customModule="Cook_For_One" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CA1-hf-YLf" customClass="addButton" customModule="Cook_For_One" customModuleProvider="target">
                                 <rect key="frame" x="242" y="108" width="84" height="36"/>
                                 <color key="backgroundColor" red="0.0" green="0.4940336045" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -122,7 +124,7 @@
                                     <action selector="deleteButtonTapped:" destination="f7e-SV-EUM" eventType="touchUpInside" id="NxE-1N-bPL"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ver-bP-q4a" customClass="addButton" customModule="Cook_For_One" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ver-bP-q4a" customClass="addButton" customModule="Cook_For_One" customModuleProvider="target">
                                 <rect key="frame" x="334" y="108" width="60" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -137,7 +139,7 @@
                                     <action selector="doneButtonTapped:" destination="f7e-SV-EUM" eventType="touchUpInside" id="S9N-Xy-03z"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWp-t7-8DE" customClass="addButton" customModule="Cook_For_One" customModuleProvider="target">
+                            <button hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWp-t7-8DE" customClass="addButton" customModule="Cook_For_One" customModuleProvider="target">
                                 <rect key="frame" x="179" y="108" width="55" height="36"/>
                                 <color key="backgroundColor" red="1" green="0.17444349315068494" blue="0.0" alpha="0.62302547089041083" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -152,7 +154,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="PTp-XA-28w"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="PTp-XA-28w" firstAttribute="trailing" secondItem="iWp-t7-8DE" secondAttribute="trailing" constant="180" id="0nn-ke-BiV"/>
                             <constraint firstItem="B5w-HG-4Q5" firstAttribute="bottom" secondItem="OV1-7U-wbj" secondAttribute="bottom" id="5OF-6Y-T7f"/>
@@ -173,7 +176,6 @@
                             <constraint firstItem="PTp-XA-28w" firstAttribute="trailing" secondItem="CA1-hf-YLf" secondAttribute="trailing" constant="88" id="lRZ-Yb-psB"/>
                             <constraint firstItem="eSi-pp-xjL" firstAttribute="centerX" secondItem="Oqj-fg-0sK" secondAttribute="centerX" id="tWu-hy-Cfe"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="PTp-XA-28w"/>
                     </view>
                     <navigationItem key="navigationItem" id="S8G-iK-DbA"/>
                     <connections>
@@ -204,5 +206,8 @@
     </scenes>
     <resources>
         <image name="delete" width="48" height="48"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

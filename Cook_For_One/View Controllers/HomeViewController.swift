@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import iOSDropDown
 import Segmentio
 import WebKit
 import CoreData
@@ -17,7 +16,9 @@ struct myVariables {
     static var params = [String : Any]()
 }
 
-class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    //MARK: -Variables and Outlets
     
     private let appDelegate =  UIApplication.shared.delegate as! AppDelegate
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -30,7 +31,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var recipeBackground: UIImageView!
     @IBOutlet weak var recipeOptions: Segmentio!
     @IBOutlet weak var recipeCollectionView: UICollectionView!
-    @IBOutlet weak var ingredientDropDown: DropDown!
     @IBOutlet weak var getStartedLabel: UILabel!
     
     let recipeData = recipeDataSource()
@@ -40,6 +40,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     var selectedFood : String?
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +50,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         foodCollectionView.dataSource = self
         
         if let flowLayout = self.foodCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
+          //          flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
         }
         foodCollectionView.isScrollEnabled = false
         
@@ -71,8 +73,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         refresh()
         numFoods = fetchedRC.fetchedObjects?.count ?? 0
         numFoodItems.text = "・\(numFoods)"
-        // Ingredient drop down
-        DropDownSetUp()
         // Nav bar set up
         navigationController?.setNavigationBarHidden(true, animated: animated)
         self.foodCollectionView.reloadData()
@@ -128,34 +128,39 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: - Food Collection View
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "foodSegue", sender: indexPath)
-    }
-    
     private var foodsToDisplay = [String]()
     let colors = [UIColor.orange, UIColor.brown, UIColor.blue, UIColor.green, UIColor.green]
     
     let foodFont = UIFont(name: "HelveticaNeue-Bold", size: 16)!
     let itemSpacing : CGFloat = 5
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "foodSegue", sender: indexPath)
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         setCollectionViewDisplay()
         return foodsToDisplay.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let item = foodsToDisplay[indexPath.row]
+        return CGSize(width: item.size(withAttributes: [
+            NSAttributedString.Key.font : UIFont(name: "HelveticaNeue-Bold", size: 16)
+        ]).width+35, height: 45)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        setCollectionViewDisplay()
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: foodCell.reuseIdentifier, for: indexPath) as? foodCell
-            else { fatalError("Could not create foodCell") }
+        else { fatalError("Could not create foodCell") }
         
         cell.displayCell(foodtxt: foodsToDisplay[indexPath.row], color: colors[indexPath.row % 5])
-        cell.foodLabel.preferredMaxLayoutWidth = 50
         
         return cell
         
     }
-    
     
     func foodStrings(foods : [Food]) -> [String] {
         
@@ -171,38 +176,40 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // Try to include items so that the container is always full
     func foodsToDisplay(foods : [String]) -> [String] {
         
-        let rowWidth : CGFloat = 374
-        let plusBubbleWidth = "+999".width(withConstrainedHeight: 30, font: foodFont)
-        var row1 : [String] = []
-        var row1Counter : CGFloat = 0
-        var row2 : [String] = []
-        var row2Counter : CGFloat = 0
-        var row3 : [String] = []
-        var row3Counter : CGFloat = 0
+        let rowWidth : CGFloat = foodCollectionView.frame.width
+        let numRows = Int((foodCollectionView.frame.height-40) / 50)
+        let plusBubbleWidth = "+999".width(withConstrainedHeight: 30, font: foodFont) + 10
+        var display : [String] = []
+        var rowWidthCounter : CGFloat = 0
+        var foodIndex = 0
         
-        for food in foods {
+        var counter = 0
+        while counter < numRows && foodIndex < foods.count {
+            let food = foods[foodIndex]
             let stringWidth = food.width(withConstrainedHeight: 30, font: foodFont)
             let itemSize = stringWidth + 33.0 + itemSpacing
+                        
+            rowWidthCounter += itemSize
+            display.append(food)
+            foodIndex += 1
             
-            if (row1Counter + itemSize < rowWidth) {
-                row1.append(food)
-                row1Counter += itemSize
-            } else if (row2Counter + itemSize < rowWidth) {
-                row2.append(food)
-                row2Counter += itemSize
-            } else if (row3Counter + itemSize < rowWidth-(plusBubbleWidth+10)) {
-                row3.append(food)
-                row3Counter += itemSize
-            } else { break }
-            
+            if counter < numRows-1 && rowWidthCounter > rowWidth {
+                counter += 1
+                rowWidthCounter = itemSize
+            }
+            else if counter == numRows-1 && rowWidthCounter > rowWidth - plusBubbleWidth {
+                counter += 1
+                display.removeLast()
+                foodIndex -= 1
+            }
         }
         
-        let displayCount = row1.count + row2.count + row3.count
-        let extra = foods.count - displayCount
+        // Add plus bubble
+        let extra = foods.count - foodIndex
         if extra > 0 {
-            row3.append("+\(extra)")
+            display.append("+\(extra)")
         }
-        return row1 + row2 + row3
+        return display
     }
     
     func setCollectionViewDisplay() {
@@ -253,7 +260,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         let option2 = SegmentioHorizontalSeparatorOptions(type: .none, height: 0, color: .white)
         
-        let option3 = SegmentioVerticalSeparatorOptions(ratio: 0, color: .white)
+        let option3 = SegmentioVerticalSeparatorOptions(ratio: 0, color: .lightGray)
         
         let options = SegmentioOptions(backgroundColor: recipeBackground.backgroundColor!.withAlphaComponent(0.01), segmentPosition: SegmentioPosition.dynamic, scrollEnabled: true, indicatorOptions: option1, horizontalSeparatorOptions: option2, verticalSeparatorOptions: option3, imageContentMode: .center, labelTextAlignment: .center, labelTextNumberOfLines: 1, segmentStates: states, animationDuration: CFTimeInterval(0.2))
         
@@ -289,48 +296,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         
     }
-    
-    // MARK: - iOS Drop Down
-    func DropDownSetUp() {
-        
-        updateIngredients()
-        ingredientDropDown.rowHeight = 40
-        ingredientDropDown.isSearchEnable = true
-        ingredientDropDown.listHeight = 300
-        ingredientDropDown.arrowColor = UIColor(displayP3Red: 164/255, green: 0, blue: 0, alpha: 1.0)
-        
-        ingredientDropDown.didSelect { (foodItem, index, id) in
-            self.getStartedLabel.isHidden = true
-            myVariables.params["q"] = foodItem
-            self.model.getRecipes(params: myVariables.params)
-        }
-    }
-    
-    func updateIngredients() {
-        ingredientDropDown.optionArray = foodStrings(foods: fetchedRC.fetchedObjects ?? [])
-    }
-}
-// MARK: - Recipe Model Protocol
-extension HomeViewController : recipeModelProtocol {
-    
-    func recipesRecieved(_ recipes: [Recipe]) {
-        
-        // Setting the recipes array global variable to the recipes passed back by the model
-        myVariables.recipes = recipes
-        
-        if recipes.count == 0 {
-            noResultsLabel.isHidden = false
-        } else {
-            noResultsLabel.isHidden = true
-        }
-        
-        // Reload the collection view
-        recipeCollectionView.reloadData()
-    }
 }
 
 // MARK: - Custom Protocols
-extension HomeViewController : AddViewControllerDelegate, FiltersControllerDelegate, recipeTransitionProtocol {
+extension HomeViewController : AddViewControllerDelegate, FiltersControllerDelegate, recipeTransitionProtocol, recipeModelProtocol {
     
     func recipeSelected(_ indexPath: IndexPath) {
         performSegue(withIdentifier: "recipeSegue", sender: indexPath)
@@ -348,7 +317,7 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
         foodCollectionView.reloadData()
         numFoods = fetchedRC.fetchedObjects?.count ?? 0
         numFoodItems.text = "・\(numFoods)"
-        updateIngredients()
+        // updateIngredients()
     }
     
     func addFilters(minCal: String?, maxCal: String?, time: String?, ingredients: String?, pFree: Bool, alcFree : Bool, tnFree: Bool) {
@@ -383,23 +352,23 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
     func goToRecipePage(indexPath : IndexPath) {
         performSegue(withIdentifier: "recipeSegue", sender: indexPath)
     }
+    
+    func recipesRecieved(_ recipes: [Recipe]) {
+        
+        // Setting the recipes array global variable to the recipes passed back by the model
+        myVariables.recipes = recipes
+        
+        if recipes.count == 0 {
+            noResultsLabel.isHidden = false
+        } else {
+            noResultsLabel.isHidden = true
+        }
+        
+        // Reload the collection view
+        recipeCollectionView.reloadData()
+    }
 }
 // MARK: - String Extensions
 
-extension String {
-    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font : font], context: nil)
-        
-        return ceil(boundingBox.height)
-    }
-    
-    func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [.font : font], context: nil)
-        
-        return ceil(boundingBox.width)
-    }
-}
 
 
