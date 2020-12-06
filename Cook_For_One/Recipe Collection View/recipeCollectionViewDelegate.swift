@@ -21,4 +21,12 @@ class recipeCollectionViewDelegate : NSObject, UICollectionViewDelegateFlowLayou
         self.delegate?.recipeSelected(indexPath)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let maxHeight : CGFloat = collectionView.bounds.height
+        let maxWidth : CGFloat = maxHeight * (2/3)
+        let cellSize = CGSize(width: maxWidth, height: maxHeight)
+        return cellSize
+    }
+    
 }

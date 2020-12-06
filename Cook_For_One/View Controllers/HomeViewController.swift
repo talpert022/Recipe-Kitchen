@@ -135,7 +135,16 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let itemSpacing : CGFloat = 5
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "foodSegue", sender: indexPath)
+        
+        if !getStartedLabel.isHidden {
+            getStartedLabel.isHidden = true
+        }
+        
+        myVariables.params.removeAll()
+        let cell = foodCollectionView.cellForItem(at: indexPath) as! foodCell
+        let foodLabel = cell.foodLabel!.text
+        myVariables.params["q"] = foodLabel
+        self.model.getRecipes(params: myVariables.params)
     }
     
     
@@ -368,7 +377,6 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
         recipeCollectionView.reloadData()
     }
 }
-// MARK: - String Extensions
 
 
 

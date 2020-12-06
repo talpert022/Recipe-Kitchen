@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,18 +54,15 @@
                         <constraints>
                             <constraint firstAttribute="width" constant="118" id="8OY-Uj-zEA"/>
                             <constraint firstAttribute="height" constant="23" id="AGI-AP-kBA"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="118" id="OWk-2z-iN4"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="AXR-TT-eIQ">
-                        <rect key="frame" x="112" y="272.5" width="88" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="88" id="Gp8-ha-vdc"/>
-                            <constraint firstAttribute="height" constant="21" id="rFp-5f-Wwd"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <rect key="frame" x="127.5" y="272.5" width="67.5" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -85,21 +82,21 @@
                 <constraint firstItem="WKq-p7-JAB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Jff-s6-Haj"/>
                 <constraint firstItem="jQz-H2-Qpk" firstAttribute="top" secondItem="BoH-Nd-ux7" secondAttribute="bottom" constant="4" id="Lcy-Si-jLe"/>
                 <constraint firstAttribute="bottom" secondItem="jQz-H2-Qpk" secondAttribute="bottom" constant="7" id="N4H-2N-U7E"/>
+                <constraint firstItem="AXR-TT-eIQ" firstAttribute="centerY" secondItem="Kes-kv-Hob" secondAttribute="centerY" id="O2z-5c-Qc3"/>
                 <constraint firstItem="BoH-Nd-ux7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Pp3-eg-Lkx"/>
-                <constraint firstAttribute="trailing" secondItem="AXR-TT-eIQ" secondAttribute="trailing" id="UfH-yB-Nxm"/>
+                <constraint firstAttribute="trailing" secondItem="AXR-TT-eIQ" secondAttribute="trailing" constant="5" id="UfH-yB-Nxm"/>
                 <constraint firstAttribute="bottom" secondItem="Kes-kv-Hob" secondAttribute="bottom" constant="9" id="WxU-v1-YgA"/>
                 <constraint firstItem="WKq-p7-JAB" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="Zes-bI-stq"/>
-                <constraint firstItem="AXR-TT-eIQ" firstAttribute="leading" secondItem="Kes-kv-Hob" secondAttribute="trailing" constant="13" id="acN-tD-Cyf"/>
-                <constraint firstAttribute="trailing" secondItem="dAP-NM-705" secondAttribute="trailing" constant="74" id="c1E-ww-86L"/>
                 <constraint firstAttribute="trailing" secondItem="ndp-PJ-oEt" secondAttribute="trailing" constant="7" id="coQ-Ox-GHm"/>
                 <constraint firstAttribute="trailing" secondItem="WKq-p7-JAB" secondAttribute="trailing" id="ehL-3G-mBH"/>
                 <constraint firstItem="dAP-NM-705" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="jEL-Qe-2lh"/>
                 <constraint firstItem="dAP-NM-705" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="k5o-Wu-43E"/>
-                <constraint firstItem="ndp-PJ-oEt" firstAttribute="bottom" secondItem="WKq-p7-JAB" secondAttribute="bottom" constant="-7" id="knE-TC-PLD"/>
+                <constraint firstItem="ndp-PJ-oEt" firstAttribute="bottom" secondItem="WKq-p7-JAB" secondAttribute="bottom" priority="750" constant="-7" id="knE-TC-PLD"/>
                 <constraint firstAttribute="bottom" secondItem="WKq-p7-JAB" secondAttribute="bottom" constant="64" id="p8v-lN-Eet"/>
-                <constraint firstItem="BoH-Nd-ux7" firstAttribute="top" secondItem="WKq-p7-JAB" secondAttribute="bottom" constant="5" id="vBR-LI-9By"/>
+                <constraint firstItem="BoH-Nd-ux7" firstAttribute="top" secondItem="WKq-p7-JAB" secondAttribute="bottom" priority="750" constant="5" id="vBR-LI-9By"/>
                 <constraint firstItem="Kes-kv-Hob" firstAttribute="leading" secondItem="jQz-H2-Qpk" secondAttribute="trailing" constant="4" id="xCu-pc-hzv"/>
                 <constraint firstItem="WKq-p7-JAB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yaT-P6-HUW"/>
+                <constraint firstItem="jQz-H2-Qpk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="zUk-gc-OrW"/>
             </constraints>
             <size key="customSize" width="188" height="274"/>
             <connections>
