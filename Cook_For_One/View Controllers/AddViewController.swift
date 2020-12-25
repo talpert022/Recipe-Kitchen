@@ -80,16 +80,3 @@ class AddViewController: UIViewController {
     }
 }
 
-extension UIButton{
-    
-    func roundedButton(){
-        let maskPath1 = UIBezierPath(roundedRect: bounds,
-                                     byRoundingCorners: [.bottomLeft , .bottomRight],
-                                     cornerRadii: CGSize(width: 15, height: 15))
-        let maskLayer1 = CAShapeLayer()
-        maskLayer1.frame = bounds
-        maskLayer1.path = maskPath1.cgPath
-        layer.mask = maskLayer1
-    }
-    
-}

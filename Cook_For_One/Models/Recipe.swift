@@ -12,9 +12,8 @@ struct Hits : Codable {
     var q: String?
     var from: Int?
     var to: Int?
-    var params: [[String]]?
-    var count: Int?
     var more: Bool?
+    var count: Int?
     var hits: [Hit]?
 }
 
@@ -25,28 +24,33 @@ struct Hit : Codable {
 }
 
 struct Recipe : Codable {
-    var uri : String?
+    var uri: String?
     var label: String?
     var image: String?
     var source: String?
     var url: String?
     var yield: Int?
+    var dietLabels : [String]?
+    var healthLabels : [String]?
+    var ingredients: [Ingredient]?
     var calories: Float?
     var totalWeight: Float?
-    var ingredients: [Ingredient]?
+    var totalTime : Float?
+    var cuisineType: [String]?
+    var mealType: [String]?
+    var dishType: [String]?
     var totalNutrients : [String : NutrientInfo]?
     var totalDaily : [String : NutrientInfo]?
-    var dietLabels : [String]?
-    var totalTime : Float?
 }
 
 struct Ingredient : Codable {
-    var foodId: String?
+    var text: String?
     var quantity: Float?
-    var measure : Measure?
+    var measure : String?
+    var food: String?
     var weight : Float?
-    var food: FoodItem?
     var foodCategory: String?
+    var image : String?
 }
 
 struct Measure : Codable {
@@ -60,7 +64,6 @@ struct FoodItem : Codable {
 }
 
 struct NutrientInfo : Codable {
-    var uri: String?
     var label: String?
     var quantity: Float?
     var unit: String?

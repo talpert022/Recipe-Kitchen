@@ -19,14 +19,16 @@ public class Food: NSManagedObject {
     
     var expirationString : String {
         if expirationDate == nil {
-            return "\(daysBetween(start: enteredDate!, end: Date())) days in"
+            return "\(daysBetween(entered: enteredDate!, expire: Date())) days in"
         } else {
-            let daysTilExpired = daysBetween(start: Date(), end: expirationDate!)
-            if daysTilExpired > 3 {
-                return "\(daysBetween(start: enteredDate!, end: Date())) days in"
+            let daysTilExpired = daysBetween(entered: Date(), expire: expirationDate!)
+            if daysTilExpired > 4 {
+                return "\(daysBetween(entered: enteredDate!, expire: Date())) days in"
             }
-            else if daysTilExpired <= 3 && daysTilExpired > 0 {
-                return "Expiring in \(daysTilExpired) days"
+            else if daysTilExpired <= 4 && daysTilExpired > 1 {
+                return "Expires in \(daysTilExpired) days"
+            } else if daysTilExpired == 1 {
+                return "Expires in 1 day"
             }
             else if daysTilExpired == 0 {
                 return "Expiring Today!!"
@@ -37,8 +39,10 @@ public class Food: NSManagedObject {
         }
     }
     
-    func daysBetween(start: Date, end: Date) -> Int {
-        return Calendar.current.dateComponents([.day], from: start, to: end).day!
+    func daysBetween(entered: Date, expire: Date) -> Int {
+        let enteredDay = entered.get(.day)
+        let expireDay =  expire.get(.day)
+        return expireDay - enteredDay
     }
     }
 

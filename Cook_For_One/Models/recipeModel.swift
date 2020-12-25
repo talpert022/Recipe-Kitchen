@@ -26,8 +26,11 @@ class recipeModel {
         
         let stringUrl = "https://api.edamam.com/search?&app_id=\(applicationID)&app_key=\(clientKey)"
         
-        AF.request(stringUrl, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).validate()
+        AF.request(stringUrl, method: .get, parameters: params, encoding: URLEncoding(arrayEncoding: .noBrackets), headers: nil).validate()
             .responseDecodable(of: Hits.self) { (response) in
+                
+                //print(response.request)
+                
                 guard let recipeService = response.value else {return}
                 let hits = recipeService.hits
                 var recipes = [Recipe]()

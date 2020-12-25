@@ -16,7 +16,6 @@ class foodInfoCell: UITableViewCell {
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var ingredientLabel: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
     
     static let reuseIdentifier = String(describing: foodInfoCell.self)
     
@@ -27,7 +26,6 @@ class foodInfoCell: UITableViewCell {
         containerView.layer.shadowColor = UIColor.gray.cgColor
         containerView.layer.shadowOffset = CGSize(width: 3, height: 3)
         containerView.backgroundColor = UIColor.white
-        deleteButton.isHidden = true
     }
     
     func displayFood(food : Food) {
@@ -35,10 +33,6 @@ class foodInfoCell: UITableViewCell {
         quantityLabel.text = food.quantity ?? ""
         locationLabel.text = food.location.label
         expirationLabel.text = food.expirationString
-    }
-    
-    func showDeleteButton() {
-        deleteButton.isHidden = false
     }
     
 

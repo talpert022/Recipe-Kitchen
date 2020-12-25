@@ -11,10 +11,15 @@ import Segmentio
 import CoreData
 
 class PantryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddViewControllerDelegate {
+
+    // MARK: - Variables and Outlets
     
     private let appDelegate =  UIApplication.shared.delegate as! AppDelegate
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var fetchedRC: NSFetchedResultsController<Food>!
+    var selectedFoods : [Food] = []
+    var segmentSelected : Bool = false
+    var editingFood : Food?
     
     @IBOutlet weak var doneButtonTrailing: NSLayoutConstraint!
     @IBOutlet weak var addButtonTrailing: NSLayoutConstraint!
@@ -29,6 +34,8 @@ class PantryViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var deleteActive : Bool = false
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,12 +44,33 @@ class PantryViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         configureUI()
         refresh()
+        
+        segmentView.selectedSegmentioIndex = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         refresh()
     }
+   
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "addSegue" {
+            let addVC = segue.destination as! AddViewController
+            addVC.delegate = self
+        }
+        
+        if segue.identifier == "editSegue" {
+            let editVC = segue.destination as! EditViewController
+            editVC.selectedFood = editingFood!
+            editVC.delegate = self
+        }
+    }
+    
+    // MARK: - Helper methods
     
     private func refresh() {
         let request = Food.fetchRequest() as NSFetchRequest<Food>
@@ -52,25 +80,14 @@ class PantryViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let sort = NSSortDescriptor(key: "enteredDate", ascending: false)
         request.sortDescriptors = [sort]
         
-        if segmentView.selectedSegmentioIndex != -1 {
-            let sort1 = NSSortDescriptor(key: #keyPath(Food.locationEnum), ascending: true)
-            request.sortDescriptors?.append(sort1)
-        }
-        
         do {
             fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             try fetchedRC.performFetch()
+            foodTableView.reloadData()
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addSegue" {
-            let addVC = segue.destination as! AddViewController
-            addVC.delegate = self
-        }
     }
     
     func addFoodItem(label: String, quantity: String?, expoDate: Date?, location: Int) {
@@ -104,6 +121,23 @@ class PantryViewController: UIViewController, UITableViewDelegate, UITableViewDa
         doneButton.layer.borderWidth = 3
     }
     
+    func fillSelectedFoods(index : Int) {
+        
+        selectedFoods.removeAll()
+        
+        if index == 0 {
+            segmentSelected = false
+        } else {
+            segmentSelected = true
+            for food in fetchedRC.fetchedObjects ?? [] {
+                if food.locationEnum == index {
+                    selectedFoods.append(food)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Actions
     @IBAction func editItemsButtonTapped(_ sender: Any) {
         
         editItemsButton.isHidden = true
@@ -214,14 +248,19 @@ class PantryViewController: UIViewController, UITableViewDelegate, UITableViewDa
         segmentView.setup(content: content, style: .onlyLabel, options: options)
         
         segmentView.valueDidChange = { segment, index in
-            self.refresh()
+            self.fillSelectedFoods(index : index)
+            self.foodTableView.reloadData()
         }
     }
     
     //MARK: - Table View
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        fetchedRC.fetchedObjects?.count ?? 0
+        if !segmentSelected {
+            return fetchedRC.fetchedObjects?.count ?? 0
+        } else {
+            return selectedFoods.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -231,19 +270,72 @@ class PantryViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
         cell.containerViewSetUp()
-        cell.displayFood(food: fetchedRC.object(at: indexPath))
         
-        if deleteActive {
-            cell.showDeleteButton()
+        if !segmentSelected {
+            cell.displayFood(food: fetchedRC.object(at: indexPath))
+        } else {
+            cell.displayFood(food: selectedFoods[indexPath.row])
         }
-        cell.deleteButton.tag = indexPath.row
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 111
     }
+    
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, handler) in
+            
+            // Delete item from persistent store
+            let food : Food
+            if !self.segmentSelected {
+                food = self.fetchedRC.object(at: indexPath)
+            } else {
+                food = self.selectedFoods[indexPath.row]
+            }
+            self.context.delete(food)
+            self.appDelegate.saveContext()
+            tableView.beginUpdates()
+            self.refresh()
+    
+            if self.segmentSelected {
+                self.selectedFoods.remove(at: indexPath.row)
+            }
+            tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.endUpdates()
+            
+        }
+        
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { (action, view, handler) in
+            
+            if !self.segmentSelected {
+                self.editingFood = self.fetchedRC.object(at: indexPath)
+            } else {
+                self.editingFood = self.selectedFoods[indexPath.row]
+            }
+            self.performSegue(withIdentifier: "editSegue", sender: indexPath)
+        }
+        editAction.backgroundColor = UIColor(displayP3Red: 0/255, green: 119/255, blue: 1, alpha: 1)
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        return configuration
+    }
+
+}
+
+// MARK: - Done Editing Protocol
+extension PantryViewController : editProtocol {
+    
+    func doneEditing() {
+        foodTableView.reloadData()
+    }
+    
 }
 
 

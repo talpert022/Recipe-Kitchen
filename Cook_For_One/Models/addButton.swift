@@ -8,7 +8,6 @@
 
 import UIKit
 
-@IBDesignable
 class addButton: UIButton {
 
     override init(frame: CGRect) {
