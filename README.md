@@ -1,6 +1,6 @@
-# CookForOne
+# Recipe Kitchen
 
-Cook For One is an iOS app, written in Swift, that allows you to add ingredients, check expiration dates, and get recipes for the food in your kitchen. 
+Recipe Kitchen is an iOS app, written in Swift, that allows you to add ingredients, check expiration dates, and get recipes for the food in your kitchen. 
 
 - [Screenshots](#Screenshots)
 - [Description](#Description)
@@ -19,7 +19,7 @@ Screenshots
 Description 
 ------------
 
-Cook For One keeps track of a user's ingredients entered into their pantry, along with information about the ingredients such as its title, quantity, location (fridge, freezer, dry pantry, etc..) and expiration date. The app recomends recipes based on the expiration dates of different foods, and sends notifications when an ingredient is about to expire so nothing goes unused. Cook For One uses the Edamam recipe search API (https://developer.edamam.com/edamam-docs-recipe-api) to find recipes. Recipes can be sorted by calories, time to cook, number of ingredient, and health labels like vegan, vegitarian, sugar-free, high-protien and more! Users can also save their favorite recipes.
+Recipe Kitchen keeps track of a user's ingredients entered into their pantry, along with information about the ingredients such as its title, quantity, location (fridge, freezer, dry pantry, etc..) and expiration date. The app recomends recipes based on the expiration dates of different foods, and sends notifications when an ingredient is about to expire so nothing goes unused. Cook For One uses the Edamam recipe search API (https://developer.edamam.com/edamam-docs-recipe-api) to find recipes. Recipes can be sorted by calories, time to cook, number of ingredient, and health labels like vegan, vegitarian, sugar-free, high-protien and more! Users can also save their favorite recipes.
 
 What I learned
 --------------
