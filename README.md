@@ -10,9 +10,9 @@ Screenshots
 ------------
 
 <p float="left">
-  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot1.png" width="500" height = "500" />
-  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot2.png" width="500" height = "500" />
-  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot3.png" width="500" height = "500" />
+  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot1.png" width="500" height = "800" />
+  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot2.png" width="500" height = "800" />
+  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot3.png" width="500" height = "800" />
 </p>
 
 
