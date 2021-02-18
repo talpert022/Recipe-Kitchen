@@ -1,6 +1,6 @@
 # Recipe Kitchen
 
-Recipe Kitchen is an iOS app, written in Swift, that allows you to add ingredients, check expiration dates, and get recipes for the food in your kitchen. 
+Recipe Kitchen is an iOS app, written exclusively in Swift, that allows you to add ingredients, check expiration dates, and get recipes for the food in your kitchen. 
 
 - [Screenshots](#Screenshots)
 - [Description](#Description)
