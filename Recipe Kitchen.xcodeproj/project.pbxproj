@@ -517,7 +517,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tommyalpert.Recipe-Kitchen";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommyalpert.RecipeKitchen;
 				PRODUCT_NAME = "Recipe Kitchen";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -573,7 +573,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tommyalpert.Recipe-Kitchen";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommyalpert.RecipeKitchen;
 				PRODUCT_NAME = "Recipe Kitchen";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -587,18 +587,18 @@
 			baseConfigurationReference = 2FB151D383E714D7ED0976BC /* Pods-Recipe Kitchen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Development: Thomas Alpert (3X9RFL3WGA)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 245388U82V;
 				INFOPLIST_FILE = "Recipe Kitchen/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tommyalpert.Recipe-Kitchen";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommyalpert.RecipeKitchen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Recipe Kitchen Dev Profile";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -609,18 +609,19 @@
 			baseConfigurationReference = 94A89FBF4332CE387298BE8F /* Pods-Recipe Kitchen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "Apple Distribution: Thomas Alpert (245388U82V)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "Apple Distribution: Thomas Alpert (245388U82V)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 245388U82V;
 				INFOPLIST_FILE = "Recipe Kitchen/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tommyalpert.Recipe-Kitchen";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tommyalpert.RecipeKitchen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Recipe Kitchen Distribution Profile";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
