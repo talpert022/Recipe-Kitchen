@@ -1,6 +1,6 @@
 # Recipe Kitchen
 
-Recipe Kitchen is an iOS app, written in Swift, that allows you to add ingredients, check expiration dates, and get recipes for the food in your kitchen. 
+Recipe Kitchen is an iOS app, written exclusively in Swift, that allows you to add ingredients, check expiration dates, and get recipes for the food in your kitchen. 
 
 - [Screenshots](#Screenshots)
 - [Description](#Description)
@@ -10,9 +10,10 @@ Screenshots
 ------------
 
 <p float="left">
-  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot1.png" width="500" height = "500" />
-  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot2.png" width="500" height = "500" />
-  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot3.png" width="500" height = "500" />
+  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot1.png" width="400" height = "800" />
+  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot2.png" width="400" height = "800" />
+  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot3.png" width="400" height = "800" />
+  <img src="https://github.com/talpert022/CookForOne/blob/master/Screenshots/screenshot4.png" width="400" height = "800" />
 </p>
 
 
