@@ -355,7 +355,7 @@
         <!--Add View Controller-->
         <scene sceneID="3gW-RX-d5u">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="D5c-IK-Qo8" customClass="AddViewController" customModule="Recipe_Kitchen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="D5c-IK-Qo8" customClass="AddViewController" customModule="Recipe_Kitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0o3-Om-LBs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

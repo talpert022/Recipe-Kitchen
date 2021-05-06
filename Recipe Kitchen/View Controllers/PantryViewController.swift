@@ -64,7 +64,13 @@ class PantryViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         segmentView.selectedSegmentioIndex = 0
     }
-    
+  
+  // Needed for if new food items are created from ingredients view controller
+  override func viewWillAppear(_ animated: Bool) {
+    refresh()
+    fillFoodArr(index: selectedIndex, sort: sortStatus)
+    foodTableView.reloadData()
+  }
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -93,7 +99,6 @@ class PantryViewController: UIViewController, UITableViewDelegate, UITableViewDa
         do {
             fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             try fetchedRC.performFetch()
-            foodTableView.reloadData()
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -186,6 +191,10 @@ class PantryViewController: UIViewController, UITableViewDelegate, UITableViewDa
         dropDown.show()
     }
     
+    /*
+      Fills foodArr, the list that the table view uses as data with the correct food items
+      based on the location segment, and sorted status variables
+    */
     func fillFoodArr(index : Int, sort : sortedStatus) {
         
         foodArr.removeAll()

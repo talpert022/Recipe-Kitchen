@@ -89,10 +89,9 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
     func foodStorageSetUp() {
         
-        
         dropDown.dataSource = ["All Items", "Fridge", "Freezer", "Pantry", "Spice Rack"]
-        dropDown.selectRow(location!)
-        locationButton.setTitle(dropDown.dataSource[location!], for: .normal)
+        dropDown.selectRow(location ?? 0)
+        locationButton.setTitle(dropDown.dataSource[location ?? 0], for: .normal)
         dropDown.width = dropDown.anchorView?.plainView.bounds.width
         dropDown.direction = .bottom
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
