@@ -11,7 +11,7 @@ import UIKit
 class recipeDataSource : NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        myVariables.recipes.count
+        Global.recipes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -20,7 +20,7 @@ class recipeDataSource : NSObject, UICollectionViewDataSource {
             fatalError("Could not create recipe cell")
         }
         
-        let recipe = myVariables.recipes[indexPath.row]
+        let recipe = Global.recipes[indexPath.row]
         
         cell.displayRecipe(recipe)
         

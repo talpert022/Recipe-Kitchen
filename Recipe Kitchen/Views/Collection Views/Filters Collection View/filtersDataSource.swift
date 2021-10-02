@@ -12,7 +12,7 @@ import UIKit
 class filtersDataSource : NSObject, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return myVariables.mealFilters.count
+        return Global.mealFilters.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -21,7 +21,7 @@ class filtersDataSource : NSObject, UICollectionViewDataSource {
             fatalError("Could not create filter cell")
         }
         
-        cell.displayCell(filter: myVariables.mealFilters[indexPath.row])
+        cell.displayCell(filter: Global.mealFilters[indexPath.row])
         
         return cell
     }

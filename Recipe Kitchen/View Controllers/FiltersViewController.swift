@@ -16,7 +16,7 @@ class FiltersViewController: UIViewController {
     // MARK: Variables and Outlets
     
     weak var delegate : FiltersControllerDelegate?
-    var filtersArr : [Filter] = myVariables.filters
+    var filtersArr : [Filter] = Global.filters
 
     // Outlets
     @IBOutlet weak var calorieValue: UILabel!
@@ -53,14 +53,14 @@ class FiltersViewController: UIViewController {
         saveButton.layer.borderColor = UIColor.white.cgColor
         saveButton.layer.cornerRadius = 10
         
-        switch1.isOn = myVariables.calsOn
-        switch2.isOn = myVariables.timeOn
-        switch3.isOn = myVariables.ingrOn
+        switch1.isOn = Global.calsOn
+        switch2.isOn = Global.timeOn
+        switch3.isOn = Global.ingrOn
         
-        minCalorieSlider.isEnabled = myVariables.calsOn
-        maxCalorieSlider.isEnabled = myVariables.calsOn
-        timeSlider.isEnabled = myVariables.timeOn
-        ingredientSlider.isEnabled = myVariables.ingrOn
+        minCalorieSlider.isEnabled = Global.calsOn
+        maxCalorieSlider.isEnabled = Global.calsOn
+        timeSlider.isEnabled = Global.timeOn
+        ingredientSlider.isEnabled = Global.ingrOn
         
         minCalorieSlider.minimumValue = 0
         minCalorieSlider.maximumValue = 2000
@@ -73,14 +73,14 @@ class FiltersViewController: UIViewController {
         ingredientSlider.minimumValue = 0
         ingredientSlider.maximumValue = 20
         
-        minCalorieSlider.value = myVariables.minCalValue ?? 0
-        maxCalorieSlider.value = myVariables.maxCalValue ?? 0
-        timeSlider.value = myVariables.timeValue ?? 0
-        ingredientSlider.value = myVariables.ingrValue ?? 0
+        minCalorieSlider.value = Global.minCalValue ?? 0
+        maxCalorieSlider.value = Global.maxCalValue ?? 0
+        timeSlider.value = Global.timeValue ?? 0
+        ingredientSlider.value = Global.ingrValue ?? 0
         
-        calorieValue.text = myVariables.calsOn ? "\(Int(minCalorieSlider.value.rounded()))-\(Int(maxCalorieSlider.value.rounded()))" : "Default"
-        timeValue.text = myVariables.timeOn ? Int(timeSlider.value.rounded()).description + " Min" : "Default"
-        ingredientValue.text = myVariables.ingrOn ? Int(ingredientSlider.value.rounded()).description : "Default"
+        calorieValue.text = Global.calsOn ? "\(Int(minCalorieSlider.value.rounded()))-\(Int(maxCalorieSlider.value.rounded()))" : "Default"
+        timeValue.text = Global.timeOn ? Int(timeSlider.value.rounded()).description + " Min" : "Default"
+        ingredientValue.text = Global.ingrOn ? Int(ingredientSlider.value.rounded()).description : "Default"
         
         for bubbleView in bubbleViews {
             bubbleView.layer.cornerRadius = 10
@@ -127,13 +127,13 @@ class FiltersViewController: UIViewController {
         delegate?.addFilters(minCal: minCals, maxCal: maxCals, time: time, ingredients: ingredients, selectedFilters: filters)
         
         // Save filter values
-        myVariables.calsOn = switch1.isOn
-        myVariables.timeOn = switch2.isOn
-        myVariables.ingrOn = switch3.isOn
-        myVariables.minCalValue = minCalorieSlider.isEnabled ? minCalorieSlider.value : nil
-        myVariables.maxCalValue = maxCalorieSlider.isEnabled ? maxCalorieSlider.value : nil
-        myVariables.timeValue = timeSlider.isEnabled ? timeSlider.value : nil
-        myVariables.ingrValue = ingredientSlider.isEnabled ? ingredientSlider.value : nil
+        Global.calsOn = switch1.isOn
+        Global.timeOn = switch2.isOn
+        Global.ingrOn = switch3.isOn
+        Global.minCalValue = minCalorieSlider.isEnabled ? minCalorieSlider.value : nil
+        Global.maxCalValue = maxCalorieSlider.isEnabled ? maxCalorieSlider.value : nil
+        Global.timeValue = timeSlider.isEnabled ? timeSlider.value : nil
+        Global.ingrValue = ingredientSlider.isEnabled ? ingredientSlider.value : nil
         
         dismiss(animated: true)
     }
@@ -210,7 +210,7 @@ extension FiltersViewController : UICollectionViewDataSource, UICollectionViewDe
             else { return filter1.label < filter2.label}
         }
         
-        return myVariables.filters.count
+        return Global.filters.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -225,7 +225,7 @@ extension FiltersViewController : UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let item = myVariables.healthFilters[indexPath.row].label
+        let item = Global.healthFilters[indexPath.row].label
         let attributes : [NSAttributedString.Key : Any] = [
             .font : UIFont(name: "Avenir-Heavy", size: 14)!
         ]

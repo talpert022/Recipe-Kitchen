@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     let filtersData = filtersDataSource()
     let filtersDelegateSource = filtersDelegate()
     
-    var model = recipeModel()
+    var model = RecipeModel()
     
     var selectedFood : String?
     var ingredients : [Food] = []
@@ -76,7 +76,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         fillIngredientsArr() // food collection view data source
         numFoods = ingredients.count
         numFoodItems.text = "・\(numFoods)"
-        myVariables.params.removeValue(forKey: "q")
+        Global.params.removeValue(forKey: "q")
         getRecipeData()
         addIngredientStack.isHidden = !(ingredients.count == 0)
         recipeCollectionView.isHidden = ingredients.count == 0
@@ -133,8 +133,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         }
         
-        myVariables.params["diet"] = dietArr
-        myVariables.params["health"] = healthArr
+        Global.params["diet"] = dietArr
+        Global.params["health"] = healthArr
     }
     
     @IBAction func menuButtonTapped(_ sender: Any) {
@@ -181,10 +181,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 for str in self!.ingredients {
                     searchStr.append(str.label + " ")
                 }
-                myVariables.params["q"] = searchStr
+                Global.params["q"] = searchStr
                 
-                self?.model.getRecipes(params: myVariables.params)
-                // If theres no 'q' parameter recipeModel won't return anything
+                self?.model.getRecipes(params: Global.params)
+                // If theres no 'q' parameter RecipeModel won't return anything
             }
         }
     }
@@ -211,7 +211,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 return
             }
             
-            let recipe = myVariables.recipes[indexPath![0].row]
+            let recipe = Global.recipes[indexPath![0].row]
             let recipeVC = segue.destination as! RecipeViewController
             recipeVC.url = recipe.url!
         }
@@ -315,7 +315,7 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
         noResultsLabel.isHidden = true
         
         if ingredients.count != 0 {
-            self.model.getRecipes(params: myVariables.params)
+            self.model.getRecipes(params: Global.params)
             addIngredientStack.isHidden = true
         } else {
             addIngredientStack.isHidden = false
@@ -343,20 +343,20 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
     
     func addFilters(minCal: String?, maxCal: String?, time: String?, ingredients: String?, selectedFilters : [Filter]?) {
         
-        myVariables.params.removeValue(forKey: "calories")
-        myVariables.params.removeValue(forKey: "time")
-        myVariables.params.removeValue(forKey: "ingr")
-        myVariables.params.removeValue(forKey: "diet")
-        myVariables.params.removeValue(forKey: "health")
+        Global.params.removeValue(forKey: "calories")
+        Global.params.removeValue(forKey: "time")
+        Global.params.removeValue(forKey: "ingr")
+        Global.params.removeValue(forKey: "diet")
+        Global.params.removeValue(forKey: "health")
         
         if minCal != nil && maxCal != nil {
-            myVariables.params["calories"] = minCal! + "-" + maxCal!
+            Global.params["calories"] = minCal! + "-" + maxCal!
         }
         if time != nil {
-            myVariables.params["time"] = time!
+            Global.params["time"] = time!
         }
         if ingredients != nil {
-            myVariables.params["ingr"] = Int(ingredients!)
+            Global.params["ingr"] = Int(ingredients!)
         }
         
         if selectedFilters != nil {
@@ -364,7 +364,7 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
         }
         
         self.noResultsLabel.isHidden = true
-        self.model.getRecipes(params: myVariables.params)
+        self.model.getRecipes(params: Global.params)
     }
     
     func goToRecipePage(indexPath : IndexPath) {
@@ -374,7 +374,7 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
     func recipesRecieved(_ recipes: [Recipe]) {
         
         // Setting the recipes array global variable to the recipes passed back by the model
-        myVariables.recipes = recipes
+        Global.recipes = recipes
         recipeCollectionView.isHidden = false
         
         if recipes.count == 0 {
@@ -390,7 +390,7 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
     }
     
     func invalidRecipeSearch() {
-        myVariables.recipes = []
+        Global.recipes = []
         recipeCollectionView.reloadData()
         addIngredientStack.isHidden = false
     }
@@ -406,7 +406,7 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
         noResultsLabel.isHidden = true
         
         // Async load recipes with all the search parameters from food items
-        myVariables.params.removeValue(forKey: "q")
+        Global.params.removeValue(forKey: "q")
         getRecipeData()
         addIngredientStack.isHidden = !(ingredients.count == 0)
         recipeCollectionView.isHidden = ingredients.count == 0

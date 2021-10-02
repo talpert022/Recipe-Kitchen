@@ -23,7 +23,7 @@ class filtersDelegate : NSObject, UICollectionViewDelegateFlowLayout {
         let attributes : [NSAttributedString.Key : Any] = [
             .font : UIFont(name: "Avenir-Heavy", size: 14)!
         ]
-        let item = myVariables.mealFilters[indexPath.row].label
+        let item = Global.mealFilters[indexPath.row].label
         
         return CGSize(width: item.size(withAttributes: attributes).width, height: 44)
     }
@@ -36,26 +36,26 @@ class filtersDelegate : NSObject, UICollectionViewDelegateFlowLayout {
         
         // Deselect current filter
         let selectedPath = IndexPath(row: selectedIndex, section: 0)
-        myVariables.mealFilters[selectedPath.row].selected = false
+        Global.mealFilters[selectedPath.row].selected = false
         
         // Change selected property of chosen filter
-        let chosenFilter = myVariables.mealFilters[indexPath.row]
+        let chosenFilter = Global.mealFilters[indexPath.row]
         chosenFilter.selected = true
         selectedIndex = indexPath.row
         
         collectionView.reloadItems(at: [selectedPath, indexPath])
         
         // Update filters and parameters
-        myVariables.params.removeValue(forKey: "mealType")
-        myVariables.params.removeValue(forKey: "dishType")
+        Global.params.removeValue(forKey: "mealType")
+        Global.params.removeValue(forKey: "dishType")
         
         switch chosenFilter.type {
         case .none:
             print("All recipes")
         case .meal:
-            myVariables.params["mealType"] = chosenFilter.label
+            Global.params["mealType"] = chosenFilter.label
         case .dish:
-            myVariables.params["dishType"] = chosenFilter.label
+            Global.params["dishType"] = chosenFilter.label
         default:
             assert(false, "Unexpected filter type")
         }

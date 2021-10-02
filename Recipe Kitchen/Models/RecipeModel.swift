@@ -1,5 +1,5 @@
 //
-//  recipeModel.swift
+//  RecipeModel.swift
 //  Cook_For_One
 //
 //  Created by Tommy Alpert on 8/19/20.
@@ -16,7 +16,7 @@ protocol recipeModelProtocol {
     func invalidRecipeSearch()
 }
 
-class recipeModel {
+class RecipeModel {
     
     var delegate: recipeModelProtocol?
     

@@ -1,5 +1,5 @@
 //
-//  myVariables.swift
+//  Global.swift
 //  Cook_For_One
 //
 //  Created by Tommy Alpert on 12/22/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct myVariables {
+struct Global {
     static var recipes = [Recipe]()
     static var params = [String : Any]()
     
