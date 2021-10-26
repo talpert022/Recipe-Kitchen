@@ -1,9 +1,9 @@
 platform :ios, '10.0'
+use_frameworks!
 
 target 'Recipe Kitchen' do
-  use_frameworks!
   pod 'Alamofire', '~> 5.2.2'
   pod 'Segmentio'
-  pod 'DropDown' 
-
+  pod 'DropDown'
+  pod 'MultiSlider'
 end

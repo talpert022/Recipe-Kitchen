@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/DropDown" "${PODS_CONFIGURATION_BUILD_DIR}/Segmentio"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/AvailableHapticFeedback" "${PODS_CONFIGURATION_BUILD_DIR}/DropDown" "${PODS_CONFIGURATION_BUILD_DIR}/MultiSlider" "${PODS_CONFIGURATION_BUILD_DIR}/Segmentio" "${PODS_CONFIGURATION_BUILD_DIR}/SweeterSwift"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/DropDown/DropDown.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Segmentio/Segmentio.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/AvailableHapticFeedback/AvailableHapticFeedback.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/DropDown/DropDown.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/MultiSlider/MultiSlider.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Segmentio/Segmentio.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SweeterSwift/SweeterSwift.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_LDFLAGS = $(inherited) -framework "Alamofire" -framework "CFNetwork" -framework "DropDown" -framework "Segmentio"
+OTHER_LDFLAGS = $(inherited) -framework "Alamofire" -framework "AvailableHapticFeedback" -framework "CFNetwork" -framework "DropDown" -framework "MultiSlider" -framework "Segmentio" -framework "SweeterSwift"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

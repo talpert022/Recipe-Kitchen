@@ -26,7 +26,7 @@ class RecipeModel {
         let applicationID : String = keys!["app_id"]!
         let clientKey : String = keys!["app_key"]!
         
-        let stringUrl = "https://api.edamam.com/search?&app_id=\(applicationID)&app_key=\(clientKey)"
+        let stringUrl = "https://api.edamam.com/api/recipes/v2?type=public&app_id=\(applicationID)&app_key=\(clientKey)"
         
         AF.request(stringUrl, method: .get, parameters: params, encoding: URLEncoding(arrayEncoding: .noBrackets), headers: nil).validate()
             .responseDecodable(of: Hits.self) { (response) in
@@ -37,13 +37,15 @@ class RecipeModel {
                     self.delegate?.invalidRecipeSearch()
                     return
                 }
-                let hits = recipeService.hits
-                var recipes = [Recipe]()
+//                let hits = recipeService.hits
+//                var recipes = [Recipe]()
+//
+//                for hit in hits! {
+//                    recipes.append(hit.recipe!)
+//                }
                 
-                for hit in hits! {
-                    recipes.append(hit.recipe!)
-                }
-                
+                let recipes = recipeService.hits!.compactMap { $0.recipe }
+                    
                 DispatchQueue.main.async {
                     self.delegate?.recipesRecieved(recipes)
                 }

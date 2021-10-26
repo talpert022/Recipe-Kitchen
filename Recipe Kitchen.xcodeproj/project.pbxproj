@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7235A40BBA29A6BD23A421ED /* Pods_Recipe_Kitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911713774D72759308C0E42F /* Pods_Recipe_Kitchen.framework */; };
+		537971A474BB3C4A69E12DBF /* Pods_Recipe_Kitchen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B9B0709636FAC254E2CFEB3 /* Pods_Recipe_Kitchen.framework */; };
 		B512AA31258852D800B34A6D /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B512AA30258852D800B34A6D /* Filter.swift */; };
 		B512AA3525887E9800B34A6D /* filterSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B512AA3325887E9700B34A6D /* filterSelectionCell.swift */; };
 		B512AA3625887E9800B34A6D /* filterSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B512AA3425887E9700B34A6D /* filterSelectionCell.xib */; };
@@ -54,9 +54,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2FB151D383E714D7ED0976BC /* Pods-Recipe Kitchen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipe Kitchen.debug.xcconfig"; path = "Target Support Files/Pods-Recipe Kitchen/Pods-Recipe Kitchen.debug.xcconfig"; sourceTree = "<group>"; };
-		911713774D72759308C0E42F /* Pods_Recipe_Kitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recipe_Kitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		94A89FBF4332CE387298BE8F /* Pods-Recipe Kitchen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipe Kitchen.release.xcconfig"; path = "Target Support Files/Pods-Recipe Kitchen/Pods-Recipe Kitchen.release.xcconfig"; sourceTree = "<group>"; };
+		6B9B0709636FAC254E2CFEB3 /* Pods_Recipe_Kitchen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recipe_Kitchen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73F1C4F54DE83CB0E9F24A87 /* Pods-Recipe Kitchen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipe Kitchen.release.xcconfig"; path = "Target Support Files/Pods-Recipe Kitchen/Pods-Recipe Kitchen.release.xcconfig"; sourceTree = "<group>"; };
+		AD7331FBEA324EC9CCFCFA06 /* Pods-Recipe Kitchen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recipe Kitchen.debug.xcconfig"; path = "Target Support Files/Pods-Recipe Kitchen/Pods-Recipe Kitchen.debug.xcconfig"; sourceTree = "<group>"; };
 		B512AA30258852D800B34A6D /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		B512AA3325887E9700B34A6D /* filterSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filterSelectionCell.swift; sourceTree = "<group>"; };
 		B512AA3425887E9700B34A6D /* filterSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = filterSelectionCell.xib; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5994E2A2502E58400E85248 /* WebKit.framework in Frameworks */,
-				7235A40BBA29A6BD23A421ED /* Pods_Recipe_Kitchen.framework in Frameworks */,
+				537971A474BB3C4A69E12DBF /* Pods_Recipe_Kitchen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				B5A53BA82501C6180007A3BF /* WebKit.framework */,
-				911713774D72759308C0E42F /* Pods_Recipe_Kitchen.framework */,
+				6B9B0709636FAC254E2CFEB3 /* Pods_Recipe_Kitchen.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,8 +129,8 @@
 		375C432B733B054879C8BBB8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2FB151D383E714D7ED0976BC /* Pods-Recipe Kitchen.debug.xcconfig */,
-				94A89FBF4332CE387298BE8F /* Pods-Recipe Kitchen.release.xcconfig */,
+				AD7331FBEA324EC9CCFCFA06 /* Pods-Recipe Kitchen.debug.xcconfig */,
+				73F1C4F54DE83CB0E9F24A87 /* Pods-Recipe Kitchen.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -298,11 +298,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B590086024C5DA2500F80B48 /* Build configuration list for PBXNativeTarget "Recipe Kitchen" */;
 			buildPhases = (
-				CAAAD149EE3BE4EF3557AD4F /* [CP] Check Pods Manifest.lock */,
+				16CC22F40CD9B4F8D25E7CB9 /* [CP] Check Pods Manifest.lock */,
 				B590084824C5DA2300F80B48 /* Sources */,
 				B590084924C5DA2300F80B48 /* Frameworks */,
 				B590084A24C5DA2300F80B48 /* Resources */,
-				2CAF6B81FC7174B1849A19AB /* [CP] Embed Pods Frameworks */,
+				A9D9D1737BB42D92695B7A03 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -365,24 +365,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2CAF6B81FC7174B1849A19AB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Recipe Kitchen/Pods-Recipe Kitchen-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Recipe Kitchen/Pods-Recipe Kitchen-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Recipe Kitchen/Pods-Recipe Kitchen-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CAAAD149EE3BE4EF3557AD4F /* [CP] Check Pods Manifest.lock */ = {
+		16CC22F40CD9B4F8D25E7CB9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -402,6 +385,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9D9D1737BB42D92695B7A03 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Recipe Kitchen/Pods-Recipe Kitchen-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Recipe Kitchen/Pods-Recipe Kitchen-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Recipe Kitchen/Pods-Recipe Kitchen-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -592,7 +592,7 @@
 		};
 		B590086124C5DA2500F80B48 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FB151D383E714D7ED0976BC /* Pods-Recipe Kitchen.debug.xcconfig */;
+			baseConfigurationReference = AD7331FBEA324EC9CCFCFA06 /* Pods-Recipe Kitchen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development: Thomas Alpert (3X9RFL3WGA)";
@@ -614,7 +614,7 @@
 		};
 		B590086224C5DA2500F80B48 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94A89FBF4332CE387298BE8F /* Pods-Recipe Kitchen.release.xcconfig */;
+			baseConfigurationReference = 73F1C4F54DE83CB0E9F24A87 /* Pods-Recipe Kitchen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Distribution: Thomas Alpert (245388U82V)";

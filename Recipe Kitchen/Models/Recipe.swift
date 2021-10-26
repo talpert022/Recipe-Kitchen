@@ -9,19 +9,28 @@
 import Foundation
 
 struct Hits : Codable {
-    var q: String?
     var from: Int?
     var to: Int?
-    var more: Bool?
     var count: Int?
+    var _links : Links?
     var hits: [Hit]?
 }
 
 struct Hit : Codable {
     var recipe: Recipe?
-    var bookmarked: Bool?
-    var bought: Bool?
+    var _links : Links?
 }
+
+struct Links : Codable {
+    var `self` : Link?
+    var next : Link?
+}
+
+struct Link : Codable {
+    var href : String?
+    var title : String?
+}
+
 
 struct Recipe : Codable {
     var uri: String?
@@ -32,6 +41,8 @@ struct Recipe : Codable {
     var yield: Int?
     var dietLabels : [String]?
     var healthLabels : [String]?
+    var cautions : [String]?
+    var ingredientLines : [String]?
     var ingredients: [Ingredient]?
     var calories: Float?
     var totalWeight: Float?
@@ -39,8 +50,8 @@ struct Recipe : Codable {
     var cuisineType: [String]?
     var mealType: [String]?
     var dishType: [String]?
-    var totalNutrients : [String : NutrientInfo]?
-    var totalDaily : [String : NutrientInfo]?
+    var totalNutrients : NutrientsInfo?
+    var totalDaily : NutrientsInfo?
 }
 
 struct Ingredient : Codable {
@@ -50,20 +61,11 @@ struct Ingredient : Codable {
     var food: String?
     var weight : Float?
     var foodCategory: String?
-    var image : String?
-}
-
-struct Measure : Codable {
-    var uri : String?
-    var label : String?
-}
-
-struct FoodItem : Codable {
     var foodId: String?
-    var label: String?
 }
 
-struct NutrientInfo : Codable {
+struct NutrientsInfo : Codable {
+    var uri : String?
     var label: String?
     var quantity: Float?
     var unit: String?
