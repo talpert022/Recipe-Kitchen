@@ -37,13 +37,7 @@ class RecipeModel {
                     self.delegate?.invalidRecipeSearch()
                     return
                 }
-//                let hits = recipeService.hits
-//                var recipes = [Recipe]()
-//
-//                for hit in hits! {
-//                    recipes.append(hit.recipe!)
-//                }
-                
+
                 let recipes = recipeService.hits!.compactMap { $0.recipe }
                     
                 DispatchQueue.main.async {

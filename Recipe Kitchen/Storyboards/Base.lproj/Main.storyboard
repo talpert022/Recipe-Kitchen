@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lsz-lg-5ed">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lsz-lg-5ed">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -536,82 +536,61 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="726"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGr-qU-jzT" userLabel="Content view">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="785"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtf-bg-hnd" userLabel="Calorie View">
-                                                <rect key="frame" x="10" y="10" width="394" height="143"/>
+                                                <rect key="frame" x="10" y="10" width="394" height="117"/>
                                                 <subviews>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1nx-H1-fW2">
-                                                        <rect key="frame" x="62.5" y="92.5" width="317.5" height="31"/>
-                                                        <connections>
-                                                            <action selector="maxCalorieSliderChanged:" destination="a4a-Hq-3p3" eventType="valueChanged" id="Xyg-4V-PQp"/>
-                                                        </connections>
-                                                    </slider>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xkK-Ka-DeH">
                                                         <rect key="frame" x="329" y="14.5" width="51" height="31"/>
                                                         <connections>
                                                             <action selector="switch1On:" destination="a4a-Hq-3p3" eventType="valueChanged" id="F7M-vw-aYx"/>
                                                         </connections>
                                                     </switch>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DP5-Tr-6EL">
-                                                        <rect key="frame" x="23" y="56" width="31.5" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pac-OI-yEl">
-                                                        <rect key="frame" x="23" y="99" width="35" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bdk-0g-0eJ">
-                                                        <rect key="frame" x="62.5" y="49.5" width="317.5" height="31"/>
-                                                        <connections>
-                                                            <action selector="minCalorieSliderChanged:" destination="a4a-Hq-3p3" eventType="valueChanged" id="129-ra-Dgn"/>
-                                                        </connections>
-                                                    </slider>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nb5-FY-Xde">
-                                                        <rect key="frame" x="187.5" y="16" width="119" height="33"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmj-QK-8Rt" userLabel="Calories:">
+                                                        <rect key="frame" x="18" y="15" width="175" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="33" id="9E7-Ik-ose"/>
-                                                            <constraint firstAttribute="width" constant="119" id="hLa-pS-c05"/>
+                                                            <constraint firstAttribute="width" constant="175" id="Jlv-zX-izY"/>
+                                                            <constraint firstAttribute="height" constant="30" id="Y10-n1-MRh"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                        <color key="textColor" red="0.64313725489999995" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calories Range: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmj-QK-8Rt" userLabel="Calories:">
-                                                        <rect key="frame" x="18" y="15" width="167.5" height="30"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="osz-JE-gk5" customClass="RangeSeekSlider" customModule="RangeSeekSlider">
+                                                        <rect key="frame" x="18" y="49" width="360" height="48"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="colorBetweenHandles">
+                                                                <color key="value" systemColor="linkColor"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="lineHeight">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="handleDiameter">
+                                                                <real key="value" value="18"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="calorieSliderChanged:" destination="a4a-Hq-3p3" eventType="valueChanged" id="O92-qT-RrJ"/>
+                                                        </connections>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="xkK-Ka-DeH" secondAttribute="trailing" constant="16" id="099-Ep-l81"/>
-                                                    <constraint firstAttribute="trailing" secondItem="1nx-H1-fW2" secondAttribute="trailing" constant="16" id="2fC-Gz-1NT"/>
-                                                    <constraint firstAttribute="trailing" secondItem="bdk-0g-0eJ" secondAttribute="trailing" constant="16" id="34t-P5-YnV"/>
-                                                    <constraint firstAttribute="bottom" secondItem="pac-OI-yEl" secondAttribute="bottom" constant="27" id="6FW-Cc-VGe"/>
-                                                    <constraint firstItem="nb5-FY-Xde" firstAttribute="top" secondItem="wtf-bg-hnd" secondAttribute="top" constant="16" id="Ocr-M4-0Mf"/>
-                                                    <constraint firstItem="1nx-H1-fW2" firstAttribute="centerY" secondItem="pac-OI-yEl" secondAttribute="centerY" id="PcH-gg-vPd"/>
+                                                    <constraint firstItem="xkK-Ka-DeH" firstAttribute="top" secondItem="wtf-bg-hnd" secondAttribute="top" constant="14.5" id="EP9-sw-GGV"/>
+                                                    <constraint firstAttribute="trailing" secondItem="osz-JE-gk5" secondAttribute="trailing" constant="16" id="JCy-Mc-6I3"/>
                                                     <constraint firstItem="nmj-QK-8Rt" firstAttribute="leading" secondItem="wtf-bg-hnd" secondAttribute="leading" constant="18" id="Puj-3W-tfB"/>
-                                                    <constraint firstAttribute="height" constant="143" id="S7G-0R-GTm"/>
-                                                    <constraint firstItem="nb5-FY-Xde" firstAttribute="leading" secondItem="nmj-QK-8Rt" secondAttribute="trailing" constant="2" id="aTv-U2-TIK"/>
+                                                    <constraint firstAttribute="height" constant="117" id="S7G-0R-GTm"/>
                                                     <constraint firstItem="nmj-QK-8Rt" firstAttribute="top" secondItem="wtf-bg-hnd" secondAttribute="top" constant="15" id="abx-Jl-M7i"/>
-                                                    <constraint firstItem="1nx-H1-fW2" firstAttribute="leading" secondItem="pac-OI-yEl" secondAttribute="trailing" constant="6.5" id="afC-TA-zL7"/>
-                                                    <constraint firstItem="pac-OI-yEl" firstAttribute="leading" secondItem="wtf-bg-hnd" secondAttribute="leading" constant="23" id="ahl-rU-Xm8"/>
-                                                    <constraint firstItem="bdk-0g-0eJ" firstAttribute="centerY" secondItem="DP5-Tr-6EL" secondAttribute="centerY" id="lu1-Fe-OxC"/>
-                                                    <constraint firstItem="DP5-Tr-6EL" firstAttribute="leading" secondItem="wtf-bg-hnd" secondAttribute="leading" constant="23" id="nr8-A9-DFQ"/>
-                                                    <constraint firstItem="bdk-0g-0eJ" firstAttribute="leading" secondItem="DP5-Tr-6EL" secondAttribute="trailing" constant="10" id="plP-qA-MyS"/>
-                                                    <constraint firstItem="DP5-Tr-6EL" firstAttribute="top" secondItem="nmj-QK-8Rt" secondAttribute="bottom" constant="11" id="rT7-HW-LAC"/>
-                                                    <constraint firstItem="xkK-Ka-DeH" firstAttribute="centerY" secondItem="nmj-QK-8Rt" secondAttribute="centerY" id="rax-Ve-Fad"/>
-                                                    <constraint firstItem="pac-OI-yEl" firstAttribute="top" secondItem="DP5-Tr-6EL" secondAttribute="bottom" constant="26" id="uwl-lV-JbD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="osz-JE-gk5" secondAttribute="bottom" constant="20" id="pcf-wd-vBA"/>
+                                                    <constraint firstItem="osz-JE-gk5" firstAttribute="leading" secondItem="wtf-bg-hnd" secondAttribute="leading" constant="18" id="tGA-Aq-j5I"/>
+                                                    <constraint firstItem="osz-JE-gk5" firstAttribute="top" secondItem="nmj-QK-8Rt" secondAttribute="bottom" constant="4" id="xVc-s4-t43"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEa-qE-GTZ" userLabel="Ingredient View">
-                                                <rect key="frame" x="10" y="290" width="394" height="117"/>
+                                                <rect key="frame" x="10" y="264" width="394" height="117"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Ingredients: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buy-nd-gJR">
                                                         <rect key="frame" x="18" y="15" width="180.5" height="30.5"/>
@@ -657,7 +636,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="npd-2Y-XMr" userLabel="Time View">
-                                                <rect key="frame" x="10" y="163" width="394" height="117"/>
+                                                <rect key="frame" x="10" y="137" width="394" height="117"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Time: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKD-tA-ace">
                                                         <rect key="frame" x="18" y="15" width="114" height="30.5"/>
@@ -703,7 +682,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbu-9d-bXV" userLabel="Filters View">
-                                                <rect key="frame" x="10" y="417" width="394" height="358"/>
+                                                <rect key="frame" x="10" y="391" width="394" height="358"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KhR-Ou-m0N">
                                                         <rect key="frame" x="18" y="15" width="157" height="31"/>
@@ -809,12 +788,10 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="calorieValue" destination="nb5-FY-Xde" id="iMf-b4-InD"/>
+                        <outlet property="calorieSlider" destination="osz-JE-gk5" id="XR0-xP-Ar2"/>
                         <outlet property="filtersCollectionView" destination="cO5-cc-toz" id="DrU-Lj-ONB"/>
                         <outlet property="ingredientSlider" destination="OYP-CK-pcy" id="I5M-Za-gcx"/>
                         <outlet property="ingredientValue" destination="kJZ-1J-5J3" id="r55-Zd-Mlp"/>
-                        <outlet property="maxCalorieSlider" destination="1nx-H1-fW2" id="HyT-xc-VBE"/>
-                        <outlet property="minCalorieSlider" destination="bdk-0g-0eJ" id="jR9-jC-wHF"/>
                         <outlet property="saveButton" destination="dp5-2G-CV9" id="Uha-7d-ctx"/>
                         <outlet property="switch1" destination="xkK-Ka-DeH" id="OwS-Ao-fgD"/>
                         <outlet property="switch2" destination="wXe-bb-U0L" id="BQP-lY-C5Y"/>
@@ -900,6 +877,11 @@
             <point key="canvasLocation" x="1172" y="100"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="osz-JE-gk5">
+            <size key="intrinsicContentSize" width="-1" height="65"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="5DS-hY-kJs"/>
     </inferredMetricsTieBreakers>
@@ -910,6 +892,9 @@
         <image name="recipe" width="25" height="25"/>
         <image name="recipe-selected" width="25" height="25"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

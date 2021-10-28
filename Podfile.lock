@@ -1,36 +1,28 @@
 PODS:
   - Alamofire (5.2.2)
-  - AvailableHapticFeedback (1.0.2)
   - DropDown (2.3.13)
-  - MultiSlider (1.11.2):
-    - AvailableHapticFeedback
-    - SweeterSwift
+  - RangeSeekSlider (1.8.0)
   - Segmentio (4.1)
-  - SweeterSwift (1.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2.2)
   - DropDown
-  - MultiSlider
+  - RangeSeekSlider
   - Segmentio
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - AvailableHapticFeedback
     - DropDown
-    - MultiSlider
+    - RangeSeekSlider
     - Segmentio
-    - SweeterSwift
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
-  AvailableHapticFeedback: 9b21b9f6d3e4566015988b5de35b40abefe6c09a
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
-  MultiSlider: 944d00877d371bbb5ce0a512fec517de87958775
+  RangeSeekSlider: 650b11fa1edcb92e1e0ede797669d98622570fb5
   Segmentio: ab29def64e1bff6e6e9b97671788a99bed3f1d9f
-  SweeterSwift: 8a90cf3156f5a1b6f39785c479369a16633b5ea9
 
-PODFILE CHECKSUM: 6cca0583c14f77654aed70c669497fc53cb95f2a
+PODFILE CHECKSUM: b6d302706cc9e76d376e4bce63649828a297caa2
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1

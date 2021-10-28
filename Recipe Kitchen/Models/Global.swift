@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Global {
     static var recipes = [Recipe]()
@@ -15,8 +16,8 @@ struct Global {
     static var calsOn = false
     static var ingrOn = false
     static var timeOn = false
-    static var minCalValue : Float? = nil
-    static var maxCalValue : Float? = nil
+    static var minCalValue : CGFloat? = nil
+    static var maxCalValue : CGFloat? = nil
     static var ingrValue : Float? = nil
     static var timeValue : Float? = nil
     

@@ -6,6 +6,7 @@
 //   
 //
 import UIKit
+import RangeSeekSlider
 
 protocol FiltersControllerDelegate: NSObjectProtocol {
     func addFilters(minCal : String?, maxCal : String?, time: String?, ingredients : String?, selectedFilters : [Filter]?)
@@ -19,10 +20,7 @@ class FiltersViewController: UIViewController {
     var filtersArr : [Filter] = Global.filters
 
     // Outlets
-    @IBOutlet weak var calorieValue: UILabel!
     @IBOutlet weak var switch1: UISwitch!
-    @IBOutlet weak var minCalorieSlider: UISlider!
-    @IBOutlet weak var maxCalorieSlider: UISlider!
     @IBOutlet weak var timeValue: UILabel!
     @IBOutlet weak var switch2: UISwitch!
     @IBOutlet weak var timeSlider: UISlider!
@@ -31,6 +29,7 @@ class FiltersViewController: UIViewController {
     @IBOutlet weak var ingredientSlider: UISlider!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var filtersCollectionView: UICollectionView!
+    @IBOutlet weak var calorieSlider: RangeSeekSlider!
     
     @IBOutlet var bubbleViews: [UIView]!
     
@@ -57,15 +56,12 @@ class FiltersViewController: UIViewController {
         switch2.isOn = Global.timeOn
         switch3.isOn = Global.ingrOn
         
-        minCalorieSlider.isEnabled = Global.calsOn
-        maxCalorieSlider.isEnabled = Global.calsOn
+        calorieSlider.isEnabled = Global.calsOn
         timeSlider.isEnabled = Global.timeOn
         ingredientSlider.isEnabled = Global.ingrOn
         
-        minCalorieSlider.minimumValue = 0
-        minCalorieSlider.maximumValue = 2000
-        maxCalorieSlider.minimumValue = 0
-        maxCalorieSlider.maximumValue = 2000
+        calorieSlider.minValue = 0
+        calorieSlider.maxValue = 2000
         
         timeSlider.minimumValue = 0
         timeSlider.maximumValue = 180
@@ -73,14 +69,13 @@ class FiltersViewController: UIViewController {
         ingredientSlider.minimumValue = 0
         ingredientSlider.maximumValue = 20
         
-        minCalorieSlider.value = Global.minCalValue ?? 0
-        maxCalorieSlider.value = Global.maxCalValue ?? 0
+        calorieSlider.selectedMinValue = Global.minCalValue ?? 0
+        calorieSlider.selectedMaxValue = Global.maxCalValue ?? 2000
         timeSlider.value = Global.timeValue ?? 0
         ingredientSlider.value = Global.ingrValue ?? 0
         
-        calorieValue.text = Global.calsOn ? "\(Int(minCalorieSlider.value.rounded()))-\(Int(maxCalorieSlider.value.rounded()))" : "Default"
-        timeValue.text = Global.timeOn ? Int(timeSlider.value.rounded()).description + " Min" : "Default"
-        ingredientValue.text = Global.ingrOn ? Int(ingredientSlider.value.rounded()).description : "Default"
+        timeValue.text = Global.timeOn ? Int(timeSlider.value.rounded()).description + " Min" : "Off"
+        ingredientValue.text = Global.ingrOn ? Int(ingredientSlider.value.rounded()).description : "Off"
         
         for bubbleView in bubbleViews {
             bubbleView.layer.cornerRadius = 10
@@ -108,8 +103,8 @@ class FiltersViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
-        let minCals = switch1.isOn ? Int(minCalorieSlider.value.rounded()).description : nil
-        let maxCals = switch1.isOn ? Int(maxCalorieSlider.value.rounded()).description : nil
+        let minCals = switch1.isOn ? Int(calorieSlider.selectedMinValue.rounded()).description : nil
+        let maxCals = switch1.isOn ? Int(calorieSlider.selectedMaxValue.rounded()).description : nil
         let time = switch2.isOn ? Int(timeSlider.value.rounded()).description : nil
         let ingredients = switch3.isOn ? Int(ingredientSlider.value.rounded()).description : nil
         
@@ -130,8 +125,8 @@ class FiltersViewController: UIViewController {
         Global.calsOn = switch1.isOn
         Global.timeOn = switch2.isOn
         Global.ingrOn = switch3.isOn
-        Global.minCalValue = minCalorieSlider.isEnabled ? minCalorieSlider.value : nil
-        Global.maxCalValue = maxCalorieSlider.isEnabled ? maxCalorieSlider.value : nil
+        Global.minCalValue = calorieSlider.isEnabled ? calorieSlider.selectedMinValue : nil
+        Global.maxCalValue = calorieSlider.isEnabled ? calorieSlider.selectedMaxValue : nil
         Global.timeValue = timeSlider.isEnabled ? timeSlider.value : nil
         Global.ingrValue = ingredientSlider.isEnabled ? ingredientSlider.value : nil
         
@@ -140,14 +135,8 @@ class FiltersViewController: UIViewController {
     
     @IBAction func switch1On(_ sender: Any) {
         
-        minCalorieSlider.isEnabled = switch1.isOn
-        maxCalorieSlider.isEnabled = switch1.isOn
-        
-        if switch1.isOn {
-            calorieValue.text = "\(Int(minCalorieSlider.value.rounded()))-\(Int(maxCalorieSlider.value.rounded()))"
-        } else {
-            calorieValue.text = "Off"
-        }
+        calorieSlider.isEnabled = switch1.isOn
+       // calorieSlider.colo
         
     }
     
@@ -171,18 +160,6 @@ class FiltersViewController: UIViewController {
         } else {
             ingredientValue.text = "Off"
         }
-    }
-    
-    @IBAction func minCalorieSliderChanged(_ sender: Any) {
-        
-        calorieValue.text = "\(Int(minCalorieSlider.value.rounded()))-\(Int(maxCalorieSlider.value.rounded()))"
-        
-    }
-    
-    @IBAction func maxCalorieSliderChanged(_ sender: Any) {
-        
-        calorieValue.text = "\(Int(minCalorieSlider.value.rounded()))-\(Int(maxCalorieSlider.value.rounded()))"
-        
     }
     
     @IBAction func timeSliderChanged(_ sender: Any) {
