@@ -51,7 +51,6 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     @IBAction func addFood(_ sender: Any) {
         
         guard addIngredient.text != "" && addIngredient.hasText == true else {
-            addIngredientTopConstraint.constant = 2
             showWarning()
             return
         }
@@ -73,6 +72,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
     
     func showWarning() {
+        addIngredientTopConstraint.constant = 2
         warningLabel.alpha = 0
         warningLabel.isHidden = false
         

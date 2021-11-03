@@ -25,7 +25,9 @@ class EditViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var editView: UIView!
     @IBOutlet weak var dropDownView: UIView!
+    @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var labelTextTopConstraint: NSLayoutConstraint!
     
     private let appDelegate =  UIApplication.shared.delegate as! AppDelegate
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -46,6 +48,8 @@ class EditViewController: UIViewController {
         quantityText.returnKeyType = UIReturnKeyType.done
         labelText.clearsOnBeginEditing = false
         quantityText.clearsOnBeginEditing = false
+        labelText.delegate = self
+        quantityText.delegate = self
         self.setupToHideKeyboardOnTapOnView()
     }
     
@@ -95,8 +99,12 @@ class EditViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         
-        // TODO: you can't assign a label to nil 
-        selectedFood?.label = labelText.text ?? ""
+        guard labelText.text != "" && labelText.hasText == true else {
+            showWarning()
+            return
+        }
+
+        selectedFood?.label = labelText.text!
         selectedFood?.quantity = quantityText.text
         selectedFood?.locationEnum = Int16(dropDown.indexForSelectedRow ?? 0)
         selectedFood?.expirationDate = expireDate.isEnabled ? expireDate.date : nil
@@ -113,10 +121,25 @@ class EditViewController: UIViewController {
         dropDown.show()
     }
     
+    func showWarning() {
+        labelTextTopConstraint.constant = 5
+        warningLabel.alpha = 0
+        warningLabel.isHidden = false
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+            self.warningLabel.alpha = 1.0
+        }, completion: nil)
+    }
+    
 }
 
-extension EditViewController
-{
+extension EditViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func setupToHideKeyboardOnTapOnView()
     {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
