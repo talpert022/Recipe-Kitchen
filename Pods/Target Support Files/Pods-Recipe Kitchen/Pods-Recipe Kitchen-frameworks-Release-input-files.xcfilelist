@@ -1,7 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-Recipe Kitchen/Pods-Recipe Kitchen-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
-${BUILT_PRODUCTS_DIR}/AvailableHapticFeedback/AvailableHapticFeedback.framework
 ${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
-${BUILT_PRODUCTS_DIR}/MultiSlider/MultiSlider.framework
 ${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework
-${BUILT_PRODUCTS_DIR}/SweeterSwift/SweeterSwift.framework
+${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework

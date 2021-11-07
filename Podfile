@@ -5,5 +5,5 @@ target 'Recipe Kitchen' do
   pod 'Alamofire', '~> 5.2.2'
   pod 'Segmentio'
   pod 'DropDown'
-  pod 'MultiSlider'
+  pod 'lottie-ios'
 end

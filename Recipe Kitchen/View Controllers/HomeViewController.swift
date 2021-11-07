@@ -50,7 +50,9 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         // Recipe Collection View Set Up
         let nib = UINib(nibName: "recipeCell", bundle: nil)
+        let footerNib = UINib(nibName: "moreRecipesCell", bundle: nil)
         self.recipeCollectionView.register(nib, forCellWithReuseIdentifier: recipeCell.reuseIdentifier)
+        self.recipeCollectionView.register(footerNib, forCellWithReuseIdentifier: moreRecipesCell.reuseIdentifier)
         recipeCollectionView.delegate = recipeDelegate
         recipeCollectionView.dataSource = recipeData
         recipeDelegate.delegate = self
@@ -327,6 +329,16 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
         performSegue(withIdentifier: "recipeSegue", sender: indexPath)
     }
     
+    func generateMoreRecipes(_ completionHandler: @escaping () -> Void) {
+        guard let nextPageString = Global.nextPageLink else {
+            // TODO: Show no more recipes notification
+            return
+        }
+        
+        self.model.getMoreRecipes(stringUrl: nextPageString, params: Global.params, completionHandler: completionHandler)
+        
+    }
+    
     func addFoodItem(label : String, quantity: String?, expoDate: Date?, location: Int) {
         let newFood = Food(entity: Food.entity(), insertInto: context)
         newFood.label = label
@@ -386,7 +398,15 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
         // Reload the collection view
         recipeCollectionView.reloadData()
         
-        recipeCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .right)
+        if recipes.count != 0 {
+            recipeCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .right)
+        }
+    }
+    
+    func moreRecipesAdded(_ recipes: [Recipe]) {
+        Global.recipes.append(contentsOf: recipes)
+        recipeCollectionView.isHidden = false
+        recipeCollectionView.reloadData()
     }
     
     func invalidRecipeSearch() {

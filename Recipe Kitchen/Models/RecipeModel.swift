@@ -13,6 +13,8 @@ protocol recipeModelProtocol {
     
     func recipesRecieved(_ recipes: [Recipe])
     
+    func moreRecipesAdded(_ recipes: [Recipe])
+    
     func invalidRecipeSearch()
 }
 
@@ -37,18 +39,40 @@ class RecipeModel {
                     self.delegate?.invalidRecipeSearch()
                     return
                 }
-//                let hits = recipeService.hits
-//                var recipes = [Recipe]()
-//
-//                for hit in hits! {
-//                    recipes.append(hit.recipe!)
-//                }
                 
                 let recipes = recipeService.hits!.compactMap { $0.recipe }
                     
                 DispatchQueue.main.async {
                     self.delegate?.recipesRecieved(recipes)
                 }
+                
+                Global.nextPageLink = recipeService._links?.next?.href
+        }
+    }
+    
+    // TODO: Security???????
+    func getMoreRecipes(stringUrl : String, params: [String : Any], completionHandler: @escaping () -> Void) {
+        
+        AF.request(stringUrl, method: .get, parameters: params, encoding: URLEncoding(arrayEncoding: .noBrackets), headers: nil).validate()
+            .responseDecodable(of: Hits.self) { (response) in
+                
+                print(response.request)
+                
+                guard let recipeService = response.value else {
+                    self.delegate?.invalidRecipeSearch()
+                    return
+                }
+                
+                let recipes = recipeService.hits!.compactMap { $0.recipe }
+                    
+                DispatchQueue.main.async {
+                    self.delegate?.moreRecipesAdded(recipes)
+                    
+                    completionHandler()
+                    
+                }
+                
+                Global.nextPageLink = recipeService._links?.next?.href
         }
     }
     

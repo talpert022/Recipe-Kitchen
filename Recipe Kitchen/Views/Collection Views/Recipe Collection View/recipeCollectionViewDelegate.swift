@@ -11,6 +11,7 @@ import UIKit
 
 protocol recipeTransitionProtocol: class {
     func recipeSelected(_ indexPath : IndexPath)
+    func generateMoreRecipes(_ completionHandler: @escaping () -> Void)
 }
 
 class recipeCollectionViewDelegate : NSObject, UICollectionViewDelegateFlowLayout {
@@ -18,7 +19,14 @@ class recipeCollectionViewDelegate : NSObject, UICollectionViewDelegateFlowLayou
     var delegate: recipeTransitionProtocol?
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.recipeSelected(indexPath)
+        if indexPath.row < Global.recipes.count {
+            self.delegate?.recipeSelected(indexPath)
+        } else {
+            let cell = collectionView.cellForItem(at: indexPath) as! moreRecipesCell
+            cell.startLoadingAnimation()
+            self.delegate?.generateMoreRecipes(cell.stopLoadingAnimation)
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

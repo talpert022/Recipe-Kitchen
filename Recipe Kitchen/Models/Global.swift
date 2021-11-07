@@ -11,6 +11,7 @@ import Foundation
 struct Global {
     static var recipes = [Recipe]()
     static var params = [String : Any]()
+    static var nextPageLink : String? = nil
     
     static var calsOn = false
     static var ingrOn = false
