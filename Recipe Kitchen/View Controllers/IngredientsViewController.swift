@@ -78,16 +78,12 @@ class IngredientsViewController: UIViewController {
     
     
     private func setUp() {
-        ingredientView.layer.cornerRadius = 15
-        saveButton.roundedButton()
-        
         kitchenButton.layer.borderWidth = 4
         kitchenButton.layer.borderColor = UIColor.darkGray.cgColor
         kitchenButton.layer.shadowColor = UIColor.black.cgColor
         kitchenButton.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
         kitchenButton.layer.shadowRadius = 8
         kitchenButton.layer.shadowOpacity = 0.5
-        
     }
     
     private func refresh() {

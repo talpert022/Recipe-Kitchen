@@ -26,6 +26,7 @@ class BuildRecipeViewController: UIViewController {
         super.viewDidLoad()
         let rootView = BuildRecipeView(delegate: delegate, dismissView: dismissView)
         let child = UIHostingController(rootView: rootView)
+        child.view.backgroundColor = .clear
         addChild(child)
         child.view.translatesAutoresizingMaskIntoConstraints = false
         hostingView.addSubview(child.view)
