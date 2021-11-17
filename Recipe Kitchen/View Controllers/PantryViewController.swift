@@ -29,7 +29,7 @@ extension sortedStatus : CaseIterable {
     }
 }
 
-class PantryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddViewControllerDelegate {
+class PantryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddViewControllerProtocol {
 
     // MARK: - Variables and Outlets
     

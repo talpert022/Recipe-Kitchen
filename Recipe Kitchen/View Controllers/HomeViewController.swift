@@ -80,6 +80,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         numFoodItems.text = "・\(numFoods)"
         Global.params.removeValue(forKey: "q")
         getRecipeData()
+        
         addIngredientStack.isHidden = !(ingredients.count == 0)
         recipeCollectionView.isHidden = ingredients.count == 0
         self.foodCollectionView.reloadData()
@@ -187,8 +188,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 
                 self?.model.getRecipes(params: Global.params)
                 // If theres no 'q' parameter RecipeModel won't return anything
+                
             }
         }
+        
     }
     
     // MARK: - Navigation
@@ -222,6 +225,11 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
             let ingrVC = segue.destination as! IngredientsViewController
             ingrVC.delegate = self
+        }
+        
+        if segue.identifier == "buildRecipe" {
+            let buildRecipeVC = segue.destination as! BuildRecipeViewController
+            buildRecipeVC.delegate = self
         }
     }
     
@@ -310,7 +318,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 }
 
 // MARK: - Custom Protocols
-extension HomeViewController : AddViewControllerDelegate, FiltersControllerDelegate,  recipeTransitionProtocol, recipeModelProtocol, filterSelectedProtocol, IngredientControllerDelegate {
+extension HomeViewController : AddViewControllerProtocol, FiltersControllerProtocol, RecipeTransitionProtocol, RecipeModelProtocol, FilterSelectedProtocol, IngredientControllerProtocol, AddMultipleIngredientsProtocol {
     
     func filterSelected() {
         
@@ -319,7 +327,7 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
         if ingredients.count != 0 {
             self.model.getRecipes(params: Global.params)
             addIngredientStack.isHidden = true
-        } else {
+        } else { 
             addIngredientStack.isHidden = false
             recipeCollectionView.isHidden = true
         }
@@ -339,6 +347,19 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
         
     }
     
+    func addMultipleIngredients(ingredients: [String]) {
+        // TODO: Present action sheet asking whether user wants to save food items
+        // If yes
+        for ingredient in ingredients.reversed() {
+            let newFood = Food(entity: Food.entity(), insertInto: context)
+            newFood.label = ingredient
+            newFood.inRecipe = true
+            newFood.enteredDate = Date()
+        }
+        appDelegate.saveContext()
+        ingredientsReturned()
+    }
+    
     func addFoodItem(label : String, quantity: String?, expoDate: Date?, location: Int) {
         let newFood = Food(entity: Food.entity(), insertInto: context)
         newFood.label = label
@@ -346,11 +367,9 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
         newFood.expirationDate = expoDate
         newFood.locationEnum = Int16(location)
         newFood.enteredDate = Date()
+        newFood.inRecipe = true
         appDelegate.saveContext()
-        refresh()
-        foodCollectionView.reloadData()
-        numFoods = fetchedRC.fetchedObjects?.count ?? 0
-        numFoodItems.text = "・\(numFoods)"
+        ingredientsReturned()
     }
     
     func addFilters(minCal: String?, maxCal: String?, time: String?, ingredients: String?, selectedFilters : [Filter]?) {
@@ -428,8 +447,10 @@ extension HomeViewController : AddViewControllerDelegate, FiltersControllerDeleg
         // Async load recipes with all the search parameters from food items
         Global.params.removeValue(forKey: "q")
         getRecipeData()
+        
         addIngredientStack.isHidden = !(ingredients.count == 0)
         recipeCollectionView.isHidden = ingredients.count == 0
+        
         numFoods = ingredients.count
         numFoodItems.text = "・\(numFoods)"
     }

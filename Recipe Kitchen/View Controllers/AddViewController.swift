@@ -9,13 +9,13 @@
 import UIKit
 import DropDown
 
-protocol AddViewControllerDelegate: NSObjectProtocol {
+protocol AddViewControllerProtocol: NSObjectProtocol {
     func addFoodItem(label: String, quantity: String?, expoDate: Date?, location : Int)
 }
 
 class AddViewController: UIViewController, UITextFieldDelegate {
     
-    var delegate : AddViewControllerDelegate?
+    var delegate : AddViewControllerProtocol?
     var location : Int?
     
     @IBOutlet weak var warningLabel: UILabel!

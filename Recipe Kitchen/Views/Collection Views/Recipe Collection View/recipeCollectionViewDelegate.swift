@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-protocol recipeTransitionProtocol: class {
+protocol RecipeTransitionProtocol: class {
     func recipeSelected(_ indexPath : IndexPath)
     func generateMoreRecipes(_ completionHandler: @escaping () -> Void)
 }
 
 class recipeCollectionViewDelegate : NSObject, UICollectionViewDelegateFlowLayout {
     
-    var delegate: recipeTransitionProtocol?
+    var delegate: RecipeTransitionProtocol?
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row < Global.recipes.count {

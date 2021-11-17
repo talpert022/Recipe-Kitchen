@@ -23,13 +23,13 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAL-ra-mbV">
-                                <rect key="frame" x="175" y="98.5" width="24" height="20.5"/>
+                                <rect key="frame" x="175" y="96" width="24" height="20.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.64311322773972601" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GmJ-eb-Z2F">
-                                <rect key="frame" x="24" y="134" width="370" height="198"/>
+                                <rect key="frame" x="24" y="129" width="370" height="203"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="Qdo-cD-NGh" customClass="LeftAlignFlowLayout" customModule="Recipe_Kitchen" customModuleProvider="target">
                                     <size key="itemSize" width="145" height="55"/>
@@ -70,17 +70,17 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9u-NU-kTt" customClass="addButton" customModule="Recipe_Kitchen" customModuleProvider="target">
-                                <rect key="frame" x="294" y="89.5" width="100" height="38"/>
+                                <rect key="frame" x="294" y="89.5" width="100" height="33"/>
                                 <color key="backgroundColor" red="1" green="0.58823529411764708" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Obk-iC-QAm"/>
-                                    <constraint firstAttribute="height" constant="38" id="aRx-t2-fSo"/>
+                                    <constraint firstAttribute="height" constant="33" id="aRx-t2-fSo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="16"/>
-                                <state key="normal" title="Edit Items">
+                                <state key="normal" title="Edit">
                                     <color key="titleColor" red="0.43137254901960786" green="0.0" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -155,32 +155,46 @@
                                 </cells>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VSZ-Zb-MLh">
-                                <rect key="frame" x="62" y="577.5" width="290" height="107"/>
+                                <rect key="frame" x="62" y="550" width="290" height="162"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search recipes by adding ingredients from your kitchen" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="qFb-AA-zD3">
-                                        <rect key="frame" x="13.5" y="0.0" width="263.5" height="52"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find recipes from the food you currently have:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="qFb-AA-zD3">
+                                        <rect key="frame" x="4.5" y="0.0" width="281.5" height="52"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKw-08-8lM" customClass="addButton" customModule="Recipe_Kitchen" customModuleProvider="target">
-                                        <rect key="frame" x="64.5" y="62" width="161" height="45"/>
+                                        <rect key="frame" x="68.5" y="62" width="153" height="45"/>
                                         <color key="backgroundColor" red="1" green="0.67620933219178081" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="iAd-fM-AAb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
-                                        <state key="normal" title="   Add Ingredients   ">
+                                        <state key="normal" title="   Add Ingredient   ">
                                             <color key="titleColor" red="0.5881046660958904" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="dj0-aR-J9P" kind="presentation" identifier="ingredientSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="5DS-hY-kJs"/>
+                                            <segue destination="OmG-KE-XEZ" kind="presentation" identifier="addSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="faM-Vg-sXt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ja5-Vy-srq" customClass="addButton" customModule="Recipe_Kitchen" customModuleProvider="target">
+                                        <rect key="frame" x="55" y="117" width="180" height="45"/>
+                                        <color key="backgroundColor" red="1" green="0.67620933220000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="KUF-2g-otI"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
+                                        <state key="normal" title="    Quick Add Recipe   ">
+                                            <color key="titleColor" red="0.58810466610000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="uey-fH-Coh" kind="presentation" identifier="buildRecipe" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="c0h-hr-FlA"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmx-JC-eQX">
-                                <rect key="frame" x="24" y="93" width="148" height="31"/>
+                                <rect key="frame" x="24" y="93" width="148" height="26"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="21"/>
                                 <color key="textColor" red="0.64386698919999996" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -262,6 +276,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3052.1739130434785" y="99.776785714285708"/>
+        </scene>
+        <!--buildRecipeController-->
+        <scene sceneID="hgY-FI-fDP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="foodInfo" referencedIdentifier="buildRecipeController" id="uey-fH-Coh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sr5-Uz-lYy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3678" y="518"/>
+        </scene>
+        <!--addViewController-->
+        <scene sceneID="fct-nM-Wlb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="foodInfo" referencedIdentifier="addViewController" id="OmG-KE-XEZ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="nI5-hF-5pz"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsq-K4-fli" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4046" y="518"/>
         </scene>
         <!--Ingredients View Controller-->
         <scene sceneID="hMS-AP-JOI">
@@ -397,7 +429,6 @@
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="19"/>
                                         <state key="normal" title="+ New Ingredient"/>
                                         <connections>
-                                            <action selector="addNewIngredient:" destination="dj0-aR-J9P" eventType="touchUpInside" id="2Ba-VC-H7Q"/>
                                             <segue destination="0ex-gy-x4I" kind="presentation" identifier="addIngredient" id="XjX-tc-Kcc"/>
                                         </connections>
                                     </button>
@@ -413,6 +444,17 @@
                                         <state key="normal" image="xmark" catalog="system"/>
                                         <connections>
                                             <action selector="cancelTapped:" destination="dj0-aR-J9P" eventType="touchUpInside" id="FXh-G8-ixt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v21-dc-S5g">
+                                        <rect key="frame" x="190" y="53.5" width="164" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="HeQ-XP-0Ub"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                        <state key="normal" title="+ Quick Add Recipe"/>
+                                        <connections>
+                                            <segue destination="wo8-8a-eFZ" kind="presentation" identifier="buildRecipe" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="u0P-P4-2u9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -437,7 +479,9 @@
                                     <constraint firstAttribute="trailing" secondItem="9cW-6U-gH1" secondAttribute="trailing" constant="20" id="lMa-hr-7Rj"/>
                                     <constraint firstItem="m74-rx-yhl" firstAttribute="top" secondItem="YOs-0a-gZf" secondAttribute="top" constant="20" id="pd6-Nu-EFX"/>
                                     <constraint firstItem="FLY-z0-foc" firstAttribute="centerY" secondItem="tjg-FG-cvf" secondAttribute="centerY" id="sGR-gt-HwW"/>
+                                    <constraint firstAttribute="trailing" secondItem="v21-dc-S5g" secondAttribute="trailing" constant="20" symbolic="YES" id="sux-5j-Jx2"/>
                                     <constraint firstItem="6JU-Xm-Mmu" firstAttribute="leading" secondItem="YOs-0a-gZf" secondAttribute="leading" constant="20" id="tEc-eP-ras"/>
+                                    <constraint firstItem="v21-dc-S5g" firstAttribute="centerY" secondItem="6JU-Xm-Mmu" secondAttribute="centerY" id="xiF-qU-Fku"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -474,7 +518,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4286.9565217391309" y="322.76785714285711"/>
+            <point key="canvasLocation" x="4279.7101449275369" y="-598.66071428571422"/>
         </scene>
         <!--addViewController-->
         <scene sceneID="yez-4t-POS">
@@ -482,7 +526,15 @@
                 <viewControllerPlaceholder storyboardName="foodInfo" referencedIdentifier="addViewController" id="0ex-gy-x4I" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBz-Ew-Scg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5124" y="355"/>
+            <point key="canvasLocation" x="5088" y="-704"/>
+        </scene>
+        <!--buildRecipeController-->
+        <scene sceneID="Ps5-eZ-RQO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="foodInfo" referencedIdentifier="buildRecipeController" id="wo8-8a-eFZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xPV-TI-Iwi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5070" y="-507"/>
         </scene>
         <!--Recipe View Controller-->
         <scene sceneID="yFM-NA-uvw">
@@ -522,7 +574,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbR-6o-ye5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4286.9565217391309" y="-374.33035714285711"/>
+            <point key="canvasLocation" x="4281" y="100"/>
         </scene>
         <!--Filters View Controller-->
         <scene sceneID="GBi-t8-Wm9">
@@ -900,9 +952,6 @@
             <point key="canvasLocation" x="1172" y="100"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="5DS-hY-kJs"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="200" height="40"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>

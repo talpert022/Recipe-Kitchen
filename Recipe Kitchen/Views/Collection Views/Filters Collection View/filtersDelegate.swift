@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-protocol filterSelectedProtocol: class {
+protocol FilterSelectedProtocol: class {
     func filterSelected()
 }
 
 class filtersDelegate : NSObject, UICollectionViewDelegateFlowLayout {
     
     var selectedIndex = 0
-    var delegate: filterSelectedProtocol?
+    var delegate: FilterSelectedProtocol?
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

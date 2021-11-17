@@ -23,7 +23,7 @@ class addButton: UIButton {
     func setUpButton() {
         
         titleLabel?.font = UIFont(name: "Avenir-Black", size: 16)
-        layer.cornerRadius = 17.5
+        layer.cornerRadius = 16
         
     }
 

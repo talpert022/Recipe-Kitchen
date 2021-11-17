@@ -7,7 +7,7 @@
 //
 import UIKit
 
-protocol FiltersControllerDelegate: NSObjectProtocol {
+protocol FiltersControllerProtocol: NSObjectProtocol {
     func addFilters(minCal : String?, maxCal : String?, time: String?, ingredients : String?, selectedFilters : [Filter]?)
 }
 
@@ -15,7 +15,7 @@ class FiltersViewController: UIViewController {
     
     // MARK: Variables and Outlets
     
-    weak var delegate : FiltersControllerDelegate?
+    weak var delegate : FiltersControllerProtocol?
     var filtersArr : [Filter] = Global.filters
 
     // Outlets

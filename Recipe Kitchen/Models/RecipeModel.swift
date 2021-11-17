@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-protocol recipeModelProtocol {
+protocol RecipeModelProtocol {
     
     func recipesRecieved(_ recipes: [Recipe])
     
@@ -20,7 +20,7 @@ protocol recipeModelProtocol {
 
 class RecipeModel {
     
-    var delegate: recipeModelProtocol?
+    var delegate: RecipeModelProtocol?
     
     func getRecipes(params : [String : Any]){
         

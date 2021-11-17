@@ -148,6 +148,57 @@
             </objects>
             <point key="canvasLocation" x="5388.4057971014499" y="-38.169642857142854"/>
         </scene>
+        <!--Build Recipe View Controller-->
+        <scene sceneID="lxa-q2-KFD">
+            <objects>
+                <viewController storyboardIdentifier="buildRecipeController" id="AY8-iR-kEh" customClass="BuildRecipeViewController" customModule="Recipe_Kitchen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hvl-m9-GjU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZbR-Ej-Y36">
+                                <rect key="frame" x="32" y="210.5" width="350" height="475"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vxe-M4-t9s">
+                                        <rect key="frame" x="303" y="0.0" width="47" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="7Nu-UG-zLh"/>
+                                            <constraint firstAttribute="width" constant="47" id="Aph-dq-vdK"/>
+                                            <constraint firstAttribute="width" constant="47" id="DG8-ZW-dot"/>
+                                            <constraint firstAttribute="height" constant="44" id="lW0-9X-JlF"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="xmark" catalog="system"/>
+                                        <connections>
+                                            <action selector="dismissPressed:" destination="AY8-iR-kEh" eventType="touchUpInside" id="2GL-eI-4QH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="vxe-M4-t9s" secondAttribute="trailing" id="SY8-Ms-f8l"/>
+                                    <constraint firstAttribute="height" constant="475" id="ttC-qV-JyG"/>
+                                    <constraint firstItem="vxe-M4-t9s" firstAttribute="top" secondItem="ZbR-Ej-Y36" secondAttribute="top" id="vkv-fg-nZo"/>
+                                    <constraint firstAttribute="width" constant="350" id="yTL-eQ-frI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="mYt-vU-u1i"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80125548507993583" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="ZbR-Ej-Y36" firstAttribute="centerX" secondItem="Hvl-m9-GjU" secondAttribute="centerX" id="7BU-U1-inc"/>
+                            <constraint firstItem="ZbR-Ej-Y36" firstAttribute="centerY" secondItem="Hvl-m9-GjU" secondAttribute="centerY" id="GuO-EB-6m5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="vxe-M4-t9s" id="Qga-8Y-x4t"/>
+                        <outlet property="hostingView" destination="ZbR-Ej-Y36" id="FgK-ul-iyX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5zL-ET-XSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6486.9565217391309" y="-781.47321428571422"/>
+        </scene>
         <!--Edit View Controller-->
         <scene sceneID="0wo-ZP-knv">
             <objects>
@@ -326,7 +377,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nAu-Qz-YLU"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.9003371147260274" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.8038051646406591" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ryj-gN-FDK" firstAttribute="centerY" secondItem="hds-ef-BYP" secondAttribute="centerY" id="DxU-p6-I5R"/>
                             <constraint firstItem="ryj-gN-FDK" firstAttribute="centerX" secondItem="hds-ef-BYP" secondAttribute="centerX" id="PLr-LW-B4L"/>

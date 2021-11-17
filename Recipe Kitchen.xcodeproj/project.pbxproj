@@ -21,6 +21,7 @@
 		B55A0CA12596B92800EF2CEE /* IngredientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A0CA02596B92700EF2CEE /* IngredientsViewController.swift */; };
 		B55A0CA42597E6F500EF2CEE /* ingredientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55A0CA32597E6F500EF2CEE /* ingredientCell.swift */; };
 		B55EDC0324D604F10040A39E /* filtersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55EDC0224D604F10040A39E /* filtersButton.swift */; };
+		B56075B1273DE30A0053D551 /* BuildRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56075B0273DE30A0053D551 /* BuildRecipeView.swift */; };
 		B56096952579BB230007E23B /* String Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56096942579BB230007E23B /* String Extension.swift */; };
 		B56096992579E5340007E23B /* Color Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56096982579E5340007E23B /* Color Extension.swift */; };
 		B56096A32581B3420007E23B /* filtersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56096A22581B3410007E23B /* filtersDataSource.swift */; };
@@ -32,6 +33,7 @@
 		B5633507259067DA00031B92 /* Button Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5633506259067DA00031B92 /* Button Extension.swift */; };
 		B56F588224ED91680060D1AE /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F588124ED91680060D1AE /* RecipeModel.swift */; };
 		B56F58A024EEDBB50060D1AE /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F589F24EEDBB50060D1AE /* CacheManager.swift */; };
+		B582E5F52741CF6C00175872 /* BuildRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582E5F42741CF6C00175872 /* BuildRecipeViewController.swift */; };
 		B586095E2500058A00BEA963 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B586095D2500058A00BEA963 /* FiltersViewController.swift */; };
 		B58F95C124D9F1500006DD14 /* Recipe Kitchen.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B58F95BF24D9F1500006DD14 /* Recipe Kitchen.xcdatamodeld */; };
 		B590085024C5DA2300F80B48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B590084F24C5DA2300F80B48 /* AppDelegate.swift */; };
@@ -72,6 +74,7 @@
 		B55A0CA02596B92700EF2CEE /* IngredientsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsViewController.swift; sourceTree = "<group>"; };
 		B55A0CA32597E6F500EF2CEE /* ingredientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ingredientCell.swift; sourceTree = "<group>"; };
 		B55EDC0224D604F10040A39E /* filtersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filtersButton.swift; sourceTree = "<group>"; };
+		B56075B0273DE30A0053D551 /* BuildRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildRecipeView.swift; sourceTree = "<group>"; };
 		B56096942579BB230007E23B /* String Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Extension.swift"; sourceTree = "<group>"; };
 		B56096982579E5340007E23B /* Color Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Extension.swift"; sourceTree = "<group>"; };
 		B56096A22581B3410007E23B /* filtersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filtersDataSource.swift; sourceTree = "<group>"; };
@@ -83,6 +86,7 @@
 		B5633506259067DA00031B92 /* Button Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button Extension.swift"; sourceTree = "<group>"; };
 		B56F588124ED91680060D1AE /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		B56F589F24EEDBB50060D1AE /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		B582E5F42741CF6C00175872 /* BuildRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildRecipeViewController.swift; sourceTree = "<group>"; };
 		B586095D2500058A00BEA963 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
 		B58F95C024D9F1500006DD14 /* Cook_For_One.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cook_For_One.xcdatamodel; sourceTree = "<group>"; };
 		B590084C24C5DA2300F80B48 /* Recipe Kitchen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipe Kitchen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +165,7 @@
 				B5994E452505A1EE00E85248 /* PantryViewController.swift */,
 				B563350325905F6800031B92 /* EditViewController.swift */,
 				B55A0CA02596B92700EF2CEE /* IngredientsViewController.swift */,
+				B582E5F42741CF6C00175872 /* BuildRecipeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 				B55A0CA32597E6F500EF2CEE /* ingredientCell.swift */,
 				B590087024C7ADB900F80B48 /* addButton.swift */,
 				B57A638C2595690E00DB943E /* Collection Views */,
+				B56075B0273DE30A0053D551 /* BuildRecipeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -437,6 +443,7 @@
 				B5633507259067DA00031B92 /* Button Extension.swift in Sources */,
 				B51ABB7724CB657B00216F3C /* AddViewController.swift in Sources */,
 				B5B6812C24DA22AA007B4981 /* Recipe.swift in Sources */,
+				B56075B1273DE30A0053D551 /* BuildRecipeView.swift in Sources */,
 				B5D3999A24D1D96600C2F271 /* recipeDataSource.swift in Sources */,
 				B5C786E82510500E00566947 /* Food+CoreDataProperties.swift in Sources */,
 				B56096952579BB230007E23B /* String Extension.swift in Sources */,
@@ -451,6 +458,7 @@
 				B590085024C5DA2300F80B48 /* AppDelegate.swift in Sources */,
 				B5F65AC525093EB600A37C2A /* foodInfoCell.swift in Sources */,
 				B55A0CA12596B92800EF2CEE /* IngredientsViewController.swift in Sources */,
+				B582E5F52741CF6C00175872 /* BuildRecipeViewController.swift in Sources */,
 				B586095E2500058A00BEA963 /* FiltersViewController.swift in Sources */,
 				B590086C24C6179A00F80B48 /* LeftAlignFlowLayout.swift in Sources */,
 				B56F588224ED91680060D1AE /* RecipeModel.swift in Sources */,
