@@ -407,6 +407,7 @@ extension HomeViewController : AddViewControllerProtocol, FiltersControllerProto
         // Setting the recipes array global variable to the recipes passed back by the model
         Global.recipes = recipes
         recipeCollectionView.isHidden = false
+        addIngredientStack.isHidden = true
         
         if recipes.count == 0 {
             noResultsLabel.isHidden = false
@@ -431,7 +432,8 @@ extension HomeViewController : AddViewControllerProtocol, FiltersControllerProto
     func invalidRecipeSearch() {
         Global.recipes = []
         recipeCollectionView.reloadData()
-        addIngredientStack.isHidden = false
+        addIngredientStack.isHidden = true
+        noResultsLabel.isHidden = false
     }
     
     func ingredientsReturned() {
