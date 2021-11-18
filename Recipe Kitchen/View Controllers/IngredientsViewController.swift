@@ -244,6 +244,7 @@ extension IngredientsViewController : UITableViewDelegate, UITableViewDataSource
 // MARK: - Handle add
 extension IngredientsViewController : AddViewControllerProtocol, AddMultipleIngredientsProtocol {
     
+    /// Used to add one ingredient with entire range of properties from add ingredeint view
     func addFoodItem(label: String, quantity: String?, expoDate: Date?, location: Int) {
         let newFood = Food(entity: Food.entity(), insertInto: context)
         newFood.label = label
@@ -262,6 +263,7 @@ extension IngredientsViewController : AddViewControllerProtocol, AddMultipleIngr
         }
     }
     
+    /// Used to add multiple ingredients with just a title from the build recipe view
     func addMultipleIngredients(ingredients: [String]) {
         // TODO: Present action sheet asking whether user wants to save food items
         // If yes

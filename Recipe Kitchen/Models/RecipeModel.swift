@@ -51,9 +51,11 @@ class RecipeModel {
     }
     
     // TODO: Security???????
-    func getMoreRecipes(stringUrl : String, params: [String : Any], completionHandler: @escaping () -> Void) {
+    // Retrieves recipes from the next link of a current recipe GET request to support pagination
+    // Competion handler ends the more recipe cell loading animation
+    func getMoreRecipes(stringUrl : String, completionHandler: @escaping () -> Void) {
         
-        AF.request(stringUrl, method: .get, parameters: params, encoding: URLEncoding(arrayEncoding: .noBrackets), headers: nil).validate()
+        AF.request(stringUrl, method: .get, encoding: URLEncoding(arrayEncoding: .noBrackets), headers: nil).validate()
             .responseDecodable(of: Hits.self) { (response) in
                 
                 print(response.request)
@@ -67,9 +69,7 @@ class RecipeModel {
                     
                 DispatchQueue.main.async {
                     self.delegate?.moreRecipesAdded(recipes)
-                    
                     completionHandler()
-                    
                 }
                 
                 Global.nextPageLink = recipeService._links?.next?.href

@@ -31,7 +31,7 @@ class recipeDataSource : NSObject, UICollectionViewDataSource {
             cell.displayRecipe(recipe)
             
             return cell
-        } else {
+        } else { // Used for generat more recipes cell
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: moreRecipesCell.reuseIdentifier, for: indexPath) as? moreRecipesCell else {
                 fatalError("Could not create recipe cell")
             }

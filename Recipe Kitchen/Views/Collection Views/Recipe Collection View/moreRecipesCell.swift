@@ -20,11 +20,9 @@ class moreRecipesCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func startLoadingAnimation() {
-        
         if !isLoading {
             isLoading = true
             plusImageView.isHidden = true
@@ -33,9 +31,7 @@ class moreRecipesCell: UICollectionViewCell {
         }
     }
     
-    
     func stopLoadingAnimation() {
-        // Do I have to stop the animation too?
         loadingView.stop()
         loadingView.removeFromSuperview()
         plusImageView.isHidden = false

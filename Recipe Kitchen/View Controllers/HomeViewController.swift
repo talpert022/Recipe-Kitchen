@@ -343,10 +343,10 @@ extension HomeViewController : AddViewControllerProtocol, FiltersControllerProto
             return
         }
         
-        self.model.getMoreRecipes(stringUrl: nextPageString, params: Global.params, completionHandler: completionHandler)
-        
+        self.model.getMoreRecipes(stringUrl: nextPageString, completionHandler: completionHandler)
     }
     
+    /// Used to add multiple ingredients with just a title from the build recipe view
     func addMultipleIngredients(ingredients: [String]) {
         // TODO: Present action sheet asking whether user wants to save food items
         // If yes
@@ -360,6 +360,7 @@ extension HomeViewController : AddViewControllerProtocol, FiltersControllerProto
         ingredientsReturned()
     }
     
+    /// Used to add one ingredient with entire range of properties from add ingredeint view
     func addFoodItem(label : String, quantity: String?, expoDate: Date?, location: Int) {
         let newFood = Food(entity: Food.entity(), insertInto: context)
         newFood.label = label
@@ -423,6 +424,7 @@ extension HomeViewController : AddViewControllerProtocol, FiltersControllerProto
         }
     }
     
+    /// Adds the extra paginated recipes when the next button for the current recipes selection is clicked, called in recipe model
     func moreRecipesAdded(_ recipes: [Recipe]) {
         Global.recipes.append(contentsOf: recipes)
         recipeCollectionView.isHidden = false

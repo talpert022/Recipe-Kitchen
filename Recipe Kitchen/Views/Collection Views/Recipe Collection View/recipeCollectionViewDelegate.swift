@@ -22,6 +22,7 @@ class recipeCollectionViewDelegate : NSObject, UICollectionViewDelegateFlowLayou
         if indexPath.row < Global.recipes.count {
             self.delegate?.recipeSelected(indexPath)
         } else {
+            // Starts the lottie animation while next recipe link is processing
             let cell = collectionView.cellForItem(at: indexPath) as! moreRecipesCell
             cell.startLoadingAnimation()
             self.delegate?.generateMoreRecipes(cell.stopLoadingAnimation)

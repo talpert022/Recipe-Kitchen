@@ -76,13 +76,14 @@ struct BuildRecipeView: View {
             return
         }
         
+        // Delays the warning so that it brings extra attention to the user
         isShowingWarning = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.07) {
             isShowingWarning = true
         }
     }
     
-    
+    /// Returns the list of strings of entered ingredients, or nil indicating that a name has to be given for each ingredient
     func getIngredientStrs(ingredients : [Ingredients]) -> [String]? {
         
         var ingrStrs = [String]()
@@ -168,9 +169,6 @@ struct WarningLabel: View {
 struct BuildRecipeView_Previews: PreviewProvider {
     static var previews: some View {
         BuildRecipeView(dismissView: {})
-//            .previewLayout(PreviewLayout.sizeThatFits)
-//            .padding()
-//            .previewDisplayName("Default preview")
     }
 }
 

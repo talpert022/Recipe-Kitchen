@@ -12,8 +12,7 @@ import SwiftUI
 class BuildRecipeViewController: UIViewController {
     
     /*
-     This view controller hosts the SwiftUI view found in RecipeKitchen/Views folder in the file BuildRecipeView.swift. The implementation for its
-     functionality lives there.
+     This view controller hosts the SwiftUI view found in RecipeKitchen/Views folder in the file BuildRecipeView.swift. The implementation for its functionality lives there.
      */
 
     @IBOutlet weak var hostingView: UIView!
@@ -22,6 +21,10 @@ class BuildRecipeViewController: UIViewController {
     var delegate : AddMultipleIngredientsProtocol?
     
     override func viewDidLoad() {
+        
+        /*
+         Hosts swiftui build recipe view in a hosting controller and pins its layout constraints to the hosting view
+         */
         
         super.viewDidLoad()
         let rootView = BuildRecipeView(delegate: delegate, dismissView: dismissView)
@@ -44,6 +47,7 @@ class BuildRecipeViewController: UIViewController {
         
     }
     
+    /// Used inside build recipe view to programtiaclly dissmiss view controller when a recipe is built
     func dismissView() {
         dismiss(animated: true)
     }
