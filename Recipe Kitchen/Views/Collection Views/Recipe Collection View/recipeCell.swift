@@ -21,6 +21,8 @@ class recipeCell: UICollectionViewCell {
     @IBOutlet weak var recipeImage: UIImageView!
     
     var recipeToDisplay : Recipe?
+    var matchedIngredients : [String]?
+    var unMatchedIngredients : [String]?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,14 +43,7 @@ class recipeCell: UICollectionViewCell {
         recipeToDisplay = recipe
         
         // Set the labels in the recipe cell
-        recipeTitle.text = recipeToDisplay?.label
-        cookTime.text = (Int((recipeToDisplay?.totalTime! ?? 0)).description) + " min"
-        numIngredients.text = (recipeToDisplay?.ingredients?.count.description)! + " ingredients"
-        if recipeToDisplay?.dietLabels?.count == 0 {
-            healthLabel.text = ""
-        } else {
-            healthLabel.text = recipeToDisplay?.dietLabels![0]
-        }
+        configureLabels(recipeToDisplay: recipeToDisplay!)
         
         // Download and display image data
         
@@ -106,36 +101,84 @@ class recipeCell: UICollectionViewCell {
         // Kick off the datatask
         dataTask.resume()
     }
-
-//MARK: - Helpers
-func customizeCell() {
     
-    // Save Button Set Up
-    saveButton.backgroundColor = UIColor.white
-    saveButton.tintColor = UIColor(displayP3Red: 164/255, green: 0, blue: 0, alpha: 1.0)
-    saveButton.layer.cornerRadius = 18
-    
-    // Recipe image set up
-    recipeImage.contentMode = .scaleAspectFill
-    recipeImage.layer.cornerRadius = 10
-    
-    // numIngredients Label Set Up
-    numIngredients.layer.backgroundColor = CGColor(srgbRed: 1, green: 1, blue: 1, alpha: 1)
-    numIngredients.layer.cornerRadius = 14
-    
-    healthLabel.textColor = UIColor.green.darker()
-    
-}
-//MARK: - Actions
-@IBAction func saveButtonPressed(_ sender: Any) {
-    
-    if saveButton.isSelected == false {
-        saveButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        saveButton.isSelected = true
-    } else {
-        saveButton.setImage(UIImage(systemName: "heart"), for: .normal)
-        saveButton.isSelected = false
+    func setMatchedIngredients(selectedIngredients : [String]?, recipe: Recipe) {
+        guard let myItems = selectedIngredients else {
+            return
+        }
+        
+        matchedIngredients = []
+        unMatchedIngredients = []
+        
+        guard let recipeItems = recipe.ingredients else {
+            unMatchedIngredients = myItems
+            return
+        }
+        
+        // myItems is reversed to give ingredients the same order in matchedIngredients as they would be in the food array
+        for ingr in myItems.reversed() {
+            var matched = false
+            for recipeIngr in recipeItems {
+                if recipeIngr.food != nil && recipeIngr.text!.contains("\(ingr.lowercased())") {
+                    matched = true
+                    break
+                }
+            }
+            if matched {
+                matchedIngredients!.append(ingr)
+            } else {
+                unMatchedIngredients!.append(ingr)
+            }
+        }
+        
     }
-}
+    
+    //MARK: - Helpers
+    func customizeCell() {
+        
+        // Save Button Set Up
+        saveButton.backgroundColor = UIColor.white
+        saveButton.tintColor = UIColor(displayP3Red: 164/255, green: 0, blue: 0, alpha: 1.0)
+        saveButton.layer.cornerRadius = 18
+        
+        // Recipe image set up
+        recipeImage.contentMode = .scaleAspectFill
+        recipeImage.layer.cornerRadius = 10
+        
+        // numIngredients Label Set Up
+        numIngredients.layer.backgroundColor = CGColor(srgbRed: 1, green: 1, blue: 1, alpha: 1)
+        numIngredients.layer.cornerRadius = 14
+        
+        healthLabel.textColor = UIColor.green.darker()
+        
+    }
+    
+    func configureLabels(recipeToDisplay : Recipe) {
+        recipeTitle.text = recipeToDisplay.label
+        cookTime.text = (Int((recipeToDisplay.totalTime ?? 0)).description) + " min"
+        if recipeToDisplay.dietLabels?.count == 0 {
+            healthLabel.text = ""
+        } else {
+            healthLabel.text = recipeToDisplay.dietLabels![0]
+        }
+        
+        if matchedIngredients != nil && matchedIngredients!.count > 0 {
+            let matchedCount = matchedIngredients!.count
+            numIngredients.text = matchedCount.description + "/" + (recipeToDisplay.ingredients?.count.description ?? "0") + " ingredients"
+        } else {
+            numIngredients.text = (recipeToDisplay.ingredients?.count.description ?? "0") + " ingredients"
+        }
+    }
+    //MARK: - Actions
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        
+        if saveButton.isSelected == false {
+            saveButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            saveButton.isSelected = true
+        } else {
+            saveButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            saveButton.isSelected = false
+        }
+    }
 }
 

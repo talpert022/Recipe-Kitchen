@@ -10,6 +10,8 @@ import UIKit
 
 class recipeDataSource : NSObject, UICollectionViewDataSource {
     
+    weak var parentVC : HomeViewController?
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let recipeCount = Global.recipes.count
         if recipeCount > 0 && Global.nextPageLink != nil {
@@ -28,10 +30,11 @@ class recipeDataSource : NSObject, UICollectionViewDataSource {
             
             let recipe = Global.recipes[indexPath.row]
             
+            cell.setMatchedIngredients(selectedIngredients: parentVC?.foodsToDisplay, recipe: recipe)
             cell.displayRecipe(recipe)
             
             return cell
-        } else { // Used for generat more recipes cell
+        } else { // Used for generate more recipes cell
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: moreRecipesCell.reuseIdentifier, for: indexPath) as? moreRecipesCell else {
                 fatalError("Could not create recipe cell")
             }

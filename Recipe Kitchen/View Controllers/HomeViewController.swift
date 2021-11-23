@@ -55,6 +55,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         self.recipeCollectionView.register(footerNib, forCellWithReuseIdentifier: moreRecipesCell.reuseIdentifier)
         recipeCollectionView.delegate = recipeDelegate
         recipeCollectionView.dataSource = recipeData
+        recipeData.parentVC = self
         recipeDelegate.delegate = self
         recipeCollectionView.backgroundColor = recipeBackground.backgroundColor?.withAlphaComponent(0.01)
         recipeCollectionView.contentInsetAdjustmentBehavior = .never
@@ -95,7 +96,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     
-    // MARK: Helpers
+    // MARK: - Helpers
     
     private func refresh() {
         let request = Food.fetchRequest() as NSFetchRequest<Food>
@@ -235,7 +236,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: - Food Collection View
     
-    private var foodsToDisplay = [String]()
+    var foodsToDisplay = [String]()
     let colors = [UIColor.orange, UIColor.brown, UIColor.blue, UIColor.green, UIColor.green]
     
     let foodFont = UIFont(name: "HelveticaNeue-Bold", size: 16)!
@@ -310,7 +311,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         return display
     }
-    // Creates foods to display array
+    // Calculates the ingredients that can fit on the screen given a device and ingredient list
     func setCollectionViewDisplay() {
         let foodNames = foodStrings(foods: ingredients)
         foodsToDisplay = foodsToDisplay(foods: foodNames)
@@ -459,6 +460,3 @@ extension HomeViewController : AddViewControllerProtocol, FiltersControllerProto
         numFoodItems.text = "・\(numFoods)"
     }
 }
-
-
-
