@@ -13,16 +13,17 @@ class recipeCell: UICollectionViewCell {
     
     static let reuseIdentifier = String(describing: recipeCell.self)
     
-    @IBOutlet weak var numIngredients: UILabel!
+    @IBOutlet weak var numIngredients: UIButton!
     @IBOutlet weak var recipeTitle: UILabel!
     @IBOutlet weak var cookTime: UILabel!
     @IBOutlet weak var healthLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var recipeImage: UIImageView!
     
-    var recipeToDisplay : Recipe?
-    var matchedIngredients : [String]?
-    var unMatchedIngredients : [String]?
+    private var recipeToDisplay : Recipe?
+    private var ownedIngredientsCount : Int = 0
+    var parentVC : HomeViewController?
+    var matchedIngredients : [String : [String]] = [:]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -102,33 +103,39 @@ class recipeCell: UICollectionViewCell {
         dataTask.resume()
     }
     
+    /// Creates a dictionary that maps recipe ingredients to an array of corresponding local ingredients or an array with one default value if the user does not have the ingredient
     func setMatchedIngredients(selectedIngredients : [String]?, recipe: Recipe) {
         guard let myItems = selectedIngredients else {
             return
         }
         
-        matchedIngredients = []
-        unMatchedIngredients = []
+        var myIngredients = myItems.reduce([String : Bool]()) { (dict, ingr) -> [String : Bool] in
+            var dict = dict
+            dict[ingr] = false
+            return dict
+        }
         
         guard let recipeItems = recipe.ingredients else {
-            unMatchedIngredients = myItems
             return
         }
         
-        // myItems is reversed to give ingredients the same order in matchedIngredients as they would be in the food array
-        for ingr in myItems.reversed() {
+        for recipeIngr in recipeItems {
             var matched = false
-            for recipeIngr in recipeItems {
-                if recipeIngr.food != nil && recipeIngr.text!.contains("\(ingr.lowercased())") {
-                    matched = true
-                    break
+            for ingr in myItems {
+                if myIngredients[ingr] == false {
+                    if recipeIngr.text != nil && recipeIngr.text!.contains("\(ingr.lowercased())") {
+                        matched = true
+                        matchedIngredients[recipeIngr.text!] = matchedIngredients[recipeIngr.text!, default: []] + [ingr]
+                        ownedIngredientsCount += 1
+                        myIngredients.updateValue(true, forKey: ingr)
+                    }
                 }
             }
-            if matched {
-                matchedIngredients!.append(ingr)
-            } else {
-                unMatchedIngredients!.append(ingr)
+            
+            if !matched && recipeIngr.text != nil {
+                matchedIngredients.updateValue([Global.NO_LOCAL_INGR_MATCH], forKey: recipeIngr.text!)
             }
+            
         }
         
     }
@@ -162,14 +169,29 @@ class recipeCell: UICollectionViewCell {
             healthLabel.text = recipeToDisplay.dietLabels![0]
         }
         
-        if matchedIngredients != nil && matchedIngredients!.count > 0 {
-            let matchedCount = matchedIngredients!.count
-            numIngredients.text = matchedCount.description + "/" + (recipeToDisplay.ingredients?.count.description ?? "0") + " ingredients"
+        if ownedIngredientsCount > 0 {
+            numIngredients.setTitle(ownedIngredientsCount.description + "/" + (recipeToDisplay.ingredients?.count.description ?? "0") + " ingredients", for: .normal)
         } else {
-            numIngredients.text = (recipeToDisplay.ingredients?.count.description ?? "0") + " ingredients"
+            numIngredients.setTitle((recipeToDisplay.ingredients?.count.description ?? "0") + " ingredients", for: .normal)
         }
     }
+    
+    func clean() {
+        ownedIngredientsCount = 0
+        matchedIngredients = [:]
+    }
+    
     //MARK: - Actions
+    @IBAction func ingredientsPressed(_ sender: Any) {
+        
+        guard let parentVC = parentVC else {
+            return
+        }
+        
+        parentVC.navigationController?.pushViewController(MatchedIngredientsViewController(matchedIngredients: matchedIngredients, parentVC: parentVC, recipe: recipeToDisplay!), animated: true)
+    }
+    
+    
     @IBAction func saveButtonPressed(_ sender: Any) {
         
         if saveButton.isSelected == false {

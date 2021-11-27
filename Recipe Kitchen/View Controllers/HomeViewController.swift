@@ -57,6 +57,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         recipeCollectionView.dataSource = recipeData
         recipeData.parentVC = self
         recipeDelegate.delegate = self
+        recipeCollectionView.isPrefetchingEnabled = true
         recipeCollectionView.backgroundColor = recipeBackground.backgroundColor?.withAlphaComponent(0.01)
         recipeCollectionView.contentInsetAdjustmentBehavior = .never
         

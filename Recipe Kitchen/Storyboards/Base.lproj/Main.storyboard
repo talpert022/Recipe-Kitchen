@@ -538,7 +538,7 @@
         <!--Recipe View Controller-->
         <scene sceneID="yFM-NA-uvw">
             <objects>
-                <viewController id="Q5G-1y-of5" customClass="RecipeViewController" customModule="Recipe_Kitchen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="recipeVC" id="Q5G-1y-of5" customClass="RecipeViewController" customModule="Recipe_Kitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5VA-fW-Mbg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

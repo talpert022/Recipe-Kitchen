@@ -30,6 +30,9 @@ class recipeDataSource : NSObject, UICollectionViewDataSource {
             
             let recipe = Global.recipes[indexPath.row]
             
+            // Resets matched ingredients every time cell is displayed so it is not cumulative
+            cell.clean()
+            cell.parentVC = parentVC
             cell.setMatchedIngredients(selectedIngredients: parentVC?.foodsToDisplay, recipe: recipe)
             cell.displayRecipe(recipe)
             
@@ -42,5 +45,7 @@ class recipeDataSource : NSObject, UICollectionViewDataSource {
             return cell
         }
     }
+    
+    
     
 }

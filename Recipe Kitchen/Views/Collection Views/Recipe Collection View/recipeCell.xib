@@ -49,16 +49,6 @@
                             <action selector="saveButtonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="iQC-e6-UHN"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6/11 Ingredients" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAP-NM-705">
-                        <rect key="frame" x="12" y="12" width="155" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="155" id="8OY-Uj-zEA"/>
-                            <constraint firstAttribute="height" constant="30" id="AGI-AP-kBA"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="AXR-TT-eIQ">
                         <rect key="frame" x="122" y="272.5" width="73" height="21"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
@@ -71,6 +61,18 @@
                         <color key="textColor" red="0.64313725490196072" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUm-hg-kbc">
+                        <rect key="frame" x="12" y="12" width="155" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="lv2-dE-Tqh"/>
+                            <constraint firstAttribute="width" constant="155" id="wOW-kh-4dP"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                        <connections>
+                            <action selector="ingredientsPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="XMp-T6-VVv"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -83,13 +85,13 @@
                 <constraint firstAttribute="bottom" secondItem="jQz-H2-Qpk" secondAttribute="bottom" constant="7" id="N4H-2N-U7E"/>
                 <constraint firstItem="AXR-TT-eIQ" firstAttribute="centerY" secondItem="Kes-kv-Hob" secondAttribute="centerY" id="O2z-5c-Qc3"/>
                 <constraint firstItem="BoH-Nd-ux7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Pp3-eg-Lkx"/>
+                <constraint firstItem="vUm-hg-kbc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="RsJ-rH-X3q"/>
                 <constraint firstAttribute="trailing" secondItem="AXR-TT-eIQ" secondAttribute="trailing" constant="5" id="UfH-yB-Nxm"/>
                 <constraint firstAttribute="bottom" secondItem="Kes-kv-Hob" secondAttribute="bottom" constant="9" id="WxU-v1-YgA"/>
                 <constraint firstItem="WKq-p7-JAB" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="Zes-bI-stq"/>
                 <constraint firstAttribute="trailing" secondItem="ndp-PJ-oEt" secondAttribute="trailing" constant="7" id="coQ-Ox-GHm"/>
                 <constraint firstAttribute="trailing" secondItem="WKq-p7-JAB" secondAttribute="trailing" id="ehL-3G-mBH"/>
-                <constraint firstItem="dAP-NM-705" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="jEL-Qe-2lh"/>
-                <constraint firstItem="dAP-NM-705" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="k5o-Wu-43E"/>
+                <constraint firstItem="vUm-hg-kbc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="jzc-xi-Waj"/>
                 <constraint firstItem="ndp-PJ-oEt" firstAttribute="bottom" secondItem="WKq-p7-JAB" secondAttribute="bottom" priority="750" constant="-7" id="knE-TC-PLD"/>
                 <constraint firstAttribute="bottom" secondItem="WKq-p7-JAB" secondAttribute="bottom" constant="75" id="p8v-lN-Eet"/>
                 <constraint firstItem="BoH-Nd-ux7" firstAttribute="top" secondItem="WKq-p7-JAB" secondAttribute="bottom" priority="750" constant="5" id="vBR-LI-9By"/>
@@ -101,7 +103,7 @@
             <connections>
                 <outlet property="cookTime" destination="Kes-kv-Hob" id="5CJ-Mc-FTt"/>
                 <outlet property="healthLabel" destination="AXR-TT-eIQ" id="Lu9-gU-b7N"/>
-                <outlet property="numIngredients" destination="dAP-NM-705" id="inz-Y9-1KB"/>
+                <outlet property="numIngredients" destination="vUm-hg-kbc" id="HCK-R6-LJN"/>
                 <outlet property="recipeImage" destination="WKq-p7-JAB" id="Gwi-E7-J20"/>
                 <outlet property="recipeTitle" destination="BoH-Nd-ux7" id="O68-Qy-vsD"/>
                 <outlet property="saveButton" destination="ndp-PJ-oEt" id="Sii-gT-RZl"/>

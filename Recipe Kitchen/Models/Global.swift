@@ -21,6 +21,8 @@ struct Global {
     static var ingrValue : Float? = nil
     static var timeValue : Float? = nil
     
+    static let NO_LOCAL_INGR_MATCH = "CANNOT FIND LOCAL INGREDIENT FOR RECIPE INGREDIENT"
+    
     static var filters : [Filter] = {
         var filters: [Filter] = []
         filters.append(Filter(label: "Balanced", selected: false, type: .diet, api: "balanced"))
