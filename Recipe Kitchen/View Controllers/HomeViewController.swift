@@ -144,6 +144,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     @IBAction func menuButtonTapped(_ sender: Any) {
         
+        // TODO: Weak capture of self?
+        
         let notSupportedMessage = UIAlertController(title: "Sorry!", message: "Saved recipes are not supported yet. We are working hard on fixing this.", preferredStyle: .alert)
         notSupportedMessage.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             notSupportedMessage.dismiss(animated: true, completion: nil)
@@ -152,7 +154,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let actionController = UIAlertController(title: "Menu", message: nil, preferredStyle: .actionSheet)
         actionController.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
         actionController.addAction(UIAlertAction(title: "Saved Recipes", style: .default, handler: { (action) in
-            self.present(notSupportedMessage, animated: true, completion: nil)
+            let destination = UIStoryboard(name: "foodInfo", bundle: nil).instantiateViewController(withIdentifier: "SavedRecipes") as! SavedRecipeViewController
+            self.navigationController?.pushViewController(destination, animated: true)
         }))
         actionController.addAction(UIAlertAction(title: "Kitchen", style: .default, handler: { (action) in
             self.tabBarController?.selectedIndex = 1
@@ -320,7 +323,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
 }
 
 // MARK: - Custom Protocols
-extension HomeViewController : AddViewControllerProtocol, FiltersControllerProtocol, RecipeTransitionProtocol, RecipeModelProtocol, FilterSelectedProtocol, IngredientControllerProtocol, AddMultipleIngredientsProtocol {
+extension HomeViewController : AddViewControllerProtocol, FiltersControllerProtocol, RecipeTransitionProtocol, RecipeModelProtocol, FilterSelectedProtocol, IngredientControllerProtocol, AddMultipleIngredientsProtocol, SaveRecipeHandlerProtocol {
     
     func filterSelected() {
         
@@ -459,5 +462,45 @@ extension HomeViewController : AddViewControllerProtocol, FiltersControllerProto
         
         numFoods = ingredients.count
         numFoodItems.text = "・\(numFoods)"
+    }
+    
+    func saveRecipe(recipe : Recipe, id : String) {
+        let newSavedRecipe = SavedRecipe(entity: SavedRecipe.entity(), insertInto: context)
+        newSavedRecipe.id = id
+        newSavedRecipe.title = recipe.label
+        newSavedRecipe.imageUrl = recipe.image
+        newSavedRecipe.enteredDate = Date()
+        appDelegate.saveContext()
+        
+        // TODO: Show recipe saved alert
+    }
+    
+    func unsaveRecipe(recipeId : String) {
+        let fetchRequest = SavedRecipe.fetchRequest() as NSFetchRequest<SavedRecipe>
+        fetchRequest.predicate = NSPredicate(format: "id == %@", recipeId)
+        
+        if let result = try? context.fetch(fetchRequest) {
+            for savedRecipe in result {
+                context.delete(savedRecipe)
+            }
+        }
+        
+        // TODO: Show recipe unsaved alert
+    }
+    
+    func checkRecipeIsSaved(recipeId : String) -> Bool {
+        let fetchRequest = SavedRecipe.fetchRequest() as NSFetchRequest<SavedRecipe>
+        fetchRequest.predicate = NSPredicate(format: "id == %@", recipeId)
+        
+        var results: [NSManagedObject] = []
+        
+        do {
+            results = try context.fetch(fetchRequest)
+        }
+        catch {
+            print("error executing fetch request: \(error)")
+        }
+        
+        return results.count > 0
     }
 }

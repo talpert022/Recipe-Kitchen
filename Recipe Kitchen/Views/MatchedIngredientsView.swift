@@ -20,8 +20,9 @@ struct MatchedIngredientsView: View {
         VStack(alignment: .center, spacing: 7) {
             
             SeeRecipeButton(segueToRecipe: segueToRecipe)
+                .padding()
             
-            Text("Ingredients Matched: **\(matchedLocalIngredients.count)/\(parentVC?.foodsToDisplay.count ?? 0)**")
+            Text("Ingredients Matched: \(matchedLocalIngredients.count)/\(parentVC?.foodsToDisplay.count ?? 0)")
                 .font(.custom("Avenir", size: 15.0))
                 .foregroundColor(Color(red: 0, green: 0, blue: 0))
                 .alignmentGuide(HorizontalAlignment.center, computeValue: { _ in 170.0 })

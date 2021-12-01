@@ -8,10 +8,19 @@
 
 import UIKit
 import Alamofire
+import CoreData
+
+// TODO: Move to saved recipe view
+protocol SaveRecipeHandlerProtocol {
+    func saveRecipe(recipe : Recipe, id : String)
+    func unsaveRecipe(recipeId : String)
+    func checkRecipeIsSaved(recipeId : String) -> Bool
+}
 
 class recipeCell: UICollectionViewCell {
     
     static let reuseIdentifier = String(describing: recipeCell.self)
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var numIngredients: UIButton!
     @IBOutlet weak var recipeTitle: UILabel!
@@ -58,7 +67,7 @@ class recipeCell: UICollectionViewCell {
         
         // Check the cachemanager before downloading any image data
         if let imageData = CacheManager.retrieveData(urlString) {
-            
+
             // There is image data, set the imageview and return
             recipeImage.image = UIImage(data: imageData)
             return
@@ -95,7 +104,7 @@ class recipeCell: UICollectionViewCell {
                     
                 }
                 
-            } // End if
+            } // End error and data check
             
         } // End data task
         
@@ -174,11 +183,31 @@ class recipeCell: UICollectionViewCell {
         } else {
             numIngredients.setTitle((recipeToDisplay.ingredients?.count.description ?? "0") + " ingredients", for: .normal)
         }
+        
+        let recipeId = getRecipeId(recipeURI: recipeToDisplay.uri ?? "")
+        if parentVC!.checkRecipeIsSaved(recipeId: recipeId) {
+            saveButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            saveButton.isSelected = true
+        } else {
+            saveButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            saveButton.isSelected = false
+        }
     }
     
     func clean() {
         ownedIngredientsCount = 0
         matchedIngredients = [:]
+    }
+    
+    func getRecipeId(recipeURI : String) -> String {
+        var id = ""
+        for char in recipeURI.reversed() {
+            if char == "_" {
+                break
+            }
+            id.append(char)
+        }
+        return id
     }
     
     //MARK: - Actions
@@ -195,9 +224,11 @@ class recipeCell: UICollectionViewCell {
     @IBAction func saveButtonPressed(_ sender: Any) {
         
         if saveButton.isSelected == false {
+            parentVC!.saveRecipe(recipe: recipeToDisplay!, id: getRecipeId(recipeURI: recipeToDisplay!.uri ?? ""))
             saveButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             saveButton.isSelected = true
         } else {
+            parentVC!.unsaveRecipe(recipeId: getRecipeId(recipeURI: recipeToDisplay!.uri ?? ""))
             saveButton.setImage(UIImage(systemName: "heart"), for: .normal)
             saveButton.isSelected = false
         }
