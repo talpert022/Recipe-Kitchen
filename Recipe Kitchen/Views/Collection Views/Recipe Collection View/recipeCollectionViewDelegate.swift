@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol RecipeTransitionProtocol: class {
+protocol RecipeTransitionProtocol: AnyObject {
     func recipeSelected(_ indexPath : IndexPath)
     func generateMoreRecipes(_ completionHandler: @escaping () -> Void)
 }

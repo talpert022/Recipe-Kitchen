@@ -47,7 +47,9 @@ class MatchedIngredientsViewController: UIViewController {
     
     func segueToRecipe() {
         let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "recipeVC") as! RecipeViewController
-        destination.url = recipe!.url!
+        destination.parentVC = parentVC
+        destination.urlString = recipe!.url!
+        destination.recipe = recipe
         parentVC?.navigationController?.pushViewController(destination, animated: true)
     }
 

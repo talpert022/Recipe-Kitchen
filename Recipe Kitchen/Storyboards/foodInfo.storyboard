@@ -500,13 +500,15 @@
                             <constraint firstItem="h7u-Xe-gQU" firstAttribute="top" secondItem="OZp-0b-H9q" secondAttribute="top" id="zme-77-QoR"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="bPR-VJ-RwX"/>
                     <connections>
                         <outlet property="tableView" destination="h7u-Xe-gQU" id="KY9-0L-Ak5"/>
+                        <segue destination="wwt-1U-kvA" kind="show" identifier="recipeSegue" id="RDh-ev-E61"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfT-10-ppn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7631.884057971015" y="-38.169642857142854"/>
+            <point key="canvasLocation" x="9092.753623188406" y="-38.169642857142854"/>
         </scene>
         <!--Kitchen-->
         <scene sceneID="AJu-hc-n4k">
@@ -707,6 +709,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Vj-85-vye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6486.9565217391309" y="690.40178571428567"/>
+        </scene>
+        <!--Recipe View Controller-->
+        <scene sceneID="x8W-2X-FIO">
+            <objects>
+                <viewController storyboardIdentifier="recipeVC" id="wwt-1U-kvA" customClass="RecipeViewController" customModule="Recipe_Kitchen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mb0-n7-Ali">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5x-0W-nty">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1Yl-fc-V0T">
+                                <rect key="frame" x="182" y="409" width="50" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1pt-vw-CO1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="T5x-0W-nty" firstAttribute="trailing" secondItem="1pt-vw-CO1" secondAttribute="trailing" id="J3j-LY-5F3"/>
+                            <constraint firstItem="T5x-0W-nty" firstAttribute="leading" secondItem="1pt-vw-CO1" secondAttribute="leading" id="P0w-NO-LVC"/>
+                            <constraint firstItem="T5x-0W-nty" firstAttribute="top" secondItem="1pt-vw-CO1" secondAttribute="top" id="f1i-E0-NU1"/>
+                            <constraint firstAttribute="bottom" secondItem="T5x-0W-nty" secondAttribute="bottom" id="xDU-Nk-jPZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="C9t-st-MGy"/>
+                    <connections>
+                        <outlet property="spinner" destination="1Yl-fc-V0T" id="ATR-7o-ynk"/>
+                        <outlet property="webView" destination="T5x-0W-nty" id="Swa-UH-934"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ea8-Sq-5a6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10338" y="-38"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="d8C-5R-hTC">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Oxp-Xm-QKt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wY0-9u-WRr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IzV-v1-802" kind="relationship" relationship="rootViewController" id="ugX-Sq-hZm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6D9-uB-lVS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7846" y="-38"/>
         </scene>
     </scenes>
     <resources>

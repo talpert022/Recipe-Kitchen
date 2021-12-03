@@ -18,9 +18,15 @@ protocol RecipeModelProtocol {
     func invalidRecipeSearch()
 }
 
+protocol SingleRecipeProtocol {
+    
+    func recieveSingleRecipe(recipe : Recipe)
+}
+
 class RecipeModel {
     
     var delegate: RecipeModelProtocol?
+    var delegate1 : SingleRecipeProtocol?
     
     func getRecipes(params : [String : Any]){
         
@@ -76,7 +82,34 @@ class RecipeModel {
         }
     }
     
-    func getKeys() -> [String : String]? {
+    func getSingleRecipe(id : String, completionHandler : @escaping () -> Void) {
+        
+        let keys = getKeys()
+        let applicationID : String = keys!["app_id"]!
+        let clientKey : String = keys!["app_key"]!
+        
+        let stringUrl = "https://api.edamam.com/api/recipes/v2/\(id)?type=public&app_id=\(applicationID)&app_key=\(clientKey)"
+        
+        AF.request(stringUrl, method: .get, encoding: URLEncoding(arrayEncoding: .noBrackets)).validate()
+            .responseDecodable(of: Hit.self) { (response) in
+                
+                print(response.request)
+                print(response)
+                
+                guard let recipe = response.value?.recipe as? Recipe else {
+                    print("Response not decoded as recipe")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.delegate1?.recieveSingleRecipe(recipe: recipe)
+                    completionHandler()
+                }
+                
+            }
+    }
+    
+    private func getKeys() -> [String : String]? {
         var nsDict: [String : String]?
         if let path = Bundle.main.path(forResource: "keys", ofType: "plist") {
             nsDict = NSDictionary(contentsOfFile: path) as? [String : String]

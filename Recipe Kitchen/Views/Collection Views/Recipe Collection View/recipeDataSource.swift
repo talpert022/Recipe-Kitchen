@@ -33,7 +33,7 @@ class recipeDataSource : NSObject, UICollectionViewDataSource {
             // Resets matched ingredients every time cell is displayed so it is not cumulative
             cell.clean()
             cell.parentVC = parentVC
-            cell.setMatchedIngredients(selectedIngredients: parentVC?.foodsToDisplay, recipe: recipe)
+            cell.matchedIngredients = cell.setMatchedIngredients(selectedIngredients: parentVC?.foodsToDisplay, recipe: recipe)
             cell.displayRecipe(recipe)
             
             return cell

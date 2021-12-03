@@ -10,12 +10,6 @@ import UIKit
 import Alamofire
 import CoreData
 
-// TODO: Move to saved recipe view
-protocol SaveRecipeHandlerProtocol {
-    func saveRecipe(recipe : Recipe, id : String)
-    func unsaveRecipe(recipeId : String)
-    func checkRecipeIsSaved(recipeId : String) -> Bool
-}
 
 class recipeCell: UICollectionViewCell {
     
@@ -38,6 +32,7 @@ class recipeCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+
     
     /*
      ----------
@@ -113,11 +108,13 @@ class recipeCell: UICollectionViewCell {
     }
     
     /// Creates a dictionary that maps recipe ingredients to an array of corresponding local ingredients or an array with one default value if the user does not have the ingredient
-    func setMatchedIngredients(selectedIngredients : [String]?, recipe: Recipe) {
+    func setMatchedIngredients(selectedIngredients : [String]?, recipe: Recipe) -> [String : [String]] {
+        
         guard let myItems = selectedIngredients else {
-            return
+            return [:]
         }
         
+        // Turns local ingredients into dict saying whether each ingr has been found in the recipe ingredients
         var myIngredients = myItems.reduce([String : Bool]()) { (dict, ingr) -> [String : Bool] in
             var dict = dict
             dict[ingr] = false
@@ -125,8 +122,10 @@ class recipeCell: UICollectionViewCell {
         }
         
         guard let recipeItems = recipe.ingredients else {
-            return
+            return [:]
         }
+        
+        var matched_Ingredients : [String : [String]] = [:]
         
         for recipeIngr in recipeItems {
             var matched = false
@@ -134,7 +133,7 @@ class recipeCell: UICollectionViewCell {
                 if myIngredients[ingr] == false {
                     if recipeIngr.text != nil && recipeIngr.text!.contains("\(ingr.lowercased())") {
                         matched = true
-                        matchedIngredients[recipeIngr.text!] = matchedIngredients[recipeIngr.text!, default: []] + [ingr]
+                        matched_Ingredients[recipeIngr.text!] = matched_Ingredients[recipeIngr.text!, default: []] + [ingr]
                         ownedIngredientsCount += 1
                         myIngredients.updateValue(true, forKey: ingr)
                     }
@@ -142,11 +141,12 @@ class recipeCell: UICollectionViewCell {
             }
             
             if !matched && recipeIngr.text != nil {
-                matchedIngredients.updateValue([Global.NO_LOCAL_INGR_MATCH], forKey: recipeIngr.text!)
+                matched_Ingredients.updateValue([Global.NO_LOCAL_INGR_MATCH], forKey: recipeIngr.text!)
             }
             
         }
         
+        return matched_Ingredients
     }
     
     //MARK: - Helpers
@@ -205,8 +205,9 @@ class recipeCell: UICollectionViewCell {
             if char == "_" {
                 break
             }
-            id.append(char)
+            id.insert(char, at: id.startIndex)
         }
+        
         return id
     }
     
@@ -223,8 +224,9 @@ class recipeCell: UICollectionViewCell {
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         
+        
         if saveButton.isSelected == false {
-            parentVC!.saveRecipe(recipe: recipeToDisplay!, id: getRecipeId(recipeURI: recipeToDisplay!.uri ?? ""))
+            parentVC!.saveRecipe(recipeToDisplay!, nil, id: getRecipeId(recipeURI: recipeToDisplay!.uri ?? ""))
             saveButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             saveButton.isSelected = true
         } else {

@@ -12,6 +12,12 @@ class savedRecipeCell: UITableViewCell {
     
     static let reuseIdentifier = String(describing: savedRecipeCell.self)
     
+    private var savedRecipeToDisplay : SavedRecipe?
+    private var fullRecipe : Recipe?
+    private var matchedIngredients : [String : [String]]?
+    private var recipeIsSaved = true
+    var parentVC : HomeViewController?
+    
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeTitle: UILabel!
     @IBOutlet weak var savedButton: UIImageView!
@@ -29,8 +35,15 @@ class savedRecipeCell: UITableViewCell {
     
     func displayCell(recipe : SavedRecipe) {
         
+        // Keep reference to the recipe
+        savedRecipeToDisplay = recipe
+        
+        // Set up heart button and recipe titile text
         recipeTitle.text = recipe.title ?? ""
         recipeImage.layer.cornerRadius = 5
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.savedImageTapped))
+        savedButton.addGestureRecognizer(tapGR)
+        savedButton.isUserInteractionEnabled = true
         
         // Check that the recipe has an image
         guard recipe.imageUrl != nil else {
@@ -84,6 +97,51 @@ class savedRecipeCell: UITableViewCell {
     
     @IBAction func moreInfoPressed(_ sender: Any) {
         
+        let completion : () -> Void = { [weak self] in
+            
+            guard let self = self else { return }
+            
+            var recipeCell : recipeCell? = recipeCell()
+            self.matchedIngredients = recipeCell!.setMatchedIngredients(selectedIngredients: self.parentVC?.foodsToDisplay, recipe: self.fullRecipe!)
+            recipeCell = nil
+            
+            guard let parentVC = self.parentVC else {
+                return
+            }
+            
+            parentVC.navigationController?.pushViewController(MatchedIngredientsViewController(matchedIngredients: self.matchedIngredients!, parentVC: parentVC, recipe: self.fullRecipe!), animated: true)
+        }
+        
+        // Load recipe from recipe ID
+        var network : RecipeModel? = RecipeModel()
+        network?.delegate1 = self
+        network?.getSingleRecipe(id: savedRecipeToDisplay!.id!, completionHandler: completion)
+        network = nil
+    }
+    
+    @objc func savedImageTapped(sender : UITapGestureRecognizer) {
+        
+        guard let parentVC = parentVC else {
+            return
+        }
+        
+        if recipeIsSaved {
+            parentVC.unsaveRecipe(recipeId: savedRecipeToDisplay!.id!)
+            recipeIsSaved = false
+            savedButton.image = UIImage(systemName: "heart")
+        } else {
+            parentVC.saveRecipe(nil, savedRecipeToDisplay!, id: savedRecipeToDisplay!.id!)
+            recipeIsSaved = true
+            savedButton.image = UIImage(systemName: "heart.fill")
+        }
+    }
+    
+}
+
+extension savedRecipeCell : SingleRecipeProtocol {
+    
+    func recieveSingleRecipe(recipe: Recipe) {
+        fullRecipe = recipe
     }
     
 }

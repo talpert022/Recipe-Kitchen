@@ -155,6 +155,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         actionController.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
         actionController.addAction(UIAlertAction(title: "Saved Recipes", style: .default, handler: { (action) in
             let destination = UIStoryboard(name: "foodInfo", bundle: nil).instantiateViewController(withIdentifier: "SavedRecipes") as! SavedRecipeViewController
+            destination.parentVC = self
             self.navigationController?.pushViewController(destination, animated: true)
         }))
         actionController.addAction(UIAlertAction(title: "Kitchen", style: .default, handler: { (action) in
@@ -223,7 +224,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
             
             let recipe = Global.recipes[indexPath![0].row]
             let recipeVC = segue.destination as! RecipeViewController
-            recipeVC.url = recipe.url!
+            recipeVC.parentVC = self
+            recipeVC.urlString = recipe.url!
+            recipeVC.recipe = recipe
+            // TODO: Guard if recipe doesn't has url
         }
         
         if segue.identifier == "ingredientSegue" {
@@ -464,11 +468,18 @@ extension HomeViewController : AddViewControllerProtocol, FiltersControllerProto
         numFoodItems.text = "・\(numFoods)"
     }
     
-    func saveRecipe(recipe : Recipe, id : String) {
+    func saveRecipe(_ recipe : Recipe?,_ savedRecipe : SavedRecipe?, id : String) {
         let newSavedRecipe = SavedRecipe(entity: SavedRecipe.entity(), insertInto: context)
         newSavedRecipe.id = id
-        newSavedRecipe.title = recipe.label
-        newSavedRecipe.imageUrl = recipe.image
+        
+        if recipe != nil {
+            newSavedRecipe.title = recipe!.label
+            newSavedRecipe.imageUrl = recipe!.image
+        } else if savedRecipe != nil {
+            newSavedRecipe.title = savedRecipe!.title
+            newSavedRecipe.imageUrl = savedRecipe!.imageUrl
+        }
+        
         newSavedRecipe.enteredDate = Date()
         appDelegate.saveContext()
         
