@@ -39,11 +39,7 @@ class savedRecipeCell: UITableViewCell {
         savedRecipeToDisplay = recipe
         
         // Set up heart button and recipe titile text
-        recipeTitle.text = recipe.title ?? ""
-        recipeImage.layer.cornerRadius = 5
-        let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.savedImageTapped))
-        savedButton.addGestureRecognizer(tapGR)
-        savedButton.isUserInteractionEnabled = true
+        configureSavedRecipeCell()
         
         // Check that the recipe has an image
         guard recipe.imageUrl != nil else {
@@ -93,6 +89,15 @@ class savedRecipeCell: UITableViewCell {
         
         // Kick off the datatask
         dataTask.resume()
+    }
+    
+    private func configureSavedRecipeCell() {
+        recipeTitle.text = recipe.title ?? ""
+        recipeImage.layer.cornerRadius = 5
+        savedButton.image = UIImage(systemName: "heart.fill")
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.savedImageTapped))
+        savedButton.addGestureRecognizer(tapGR)
+        savedButton.isUserInteractionEnabled = true
     }
     
     @IBAction func moreInfoPressed(_ sender: Any) {
