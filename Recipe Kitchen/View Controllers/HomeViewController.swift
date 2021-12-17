@@ -103,7 +103,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let request = Food.fetchRequest() as NSFetchRequest<Food>
         let sort = NSSortDescriptor(key: "enteredDate", ascending: false)
         let sort1 = NSSortDescriptor(key: "inRecipe", ascending: false)
-        request.sortDescriptors = [sort1, sort]
+        let sort2 = NSSortDescriptor(key: "couldInclude", ascending: false)
+        request.sortDescriptors = [sort, sort1, sort2]
         
         do {
             fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
@@ -171,7 +172,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         ingredients.removeAll()
         
         for food in fetchedRC.fetchedObjects ?? [] {
-            if food.inRecipe {
+            if food.inRecipe || food.couldInclude {
                 ingredients.append(food)
             } else {
                 break
@@ -197,6 +198,32 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 
             }
         }
+        
+    }
+    
+    private func getRecipeData2() {
+        
+        if !ingredients.isEmpty {
+            var searchStr = ""
+            var couldIncludeIngrs : [String] = []
+            for food in self.ingredients {
+                if food.inRecipe {
+                    searchStr.append(food.label + " ")
+                } else {
+                    couldIncludeIngrs.append(food.label)
+                }
+            }
+            
+            
+        }
+    }
+    
+    private func recursiveSubset(ingr: [String], searchStr : String, numExclude: Int) {
+        
+        if numExclude == ingr.count {
+            return
+        }
+        
         
     }
     

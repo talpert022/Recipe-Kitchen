@@ -1,8 +1,9 @@
 //
 //  Food+CoreDataClass.swift
-//  
+//  Recipe Kitchen
 //
-//  Created by Tommy Alpert on 9/6/20.
+//  Created by Tommy Alpert on 12/17/21.
+//  Copyright © 2021 Tommy Alpert. All rights reserved.
 //
 //
 
@@ -15,8 +16,6 @@ public class Food: NSManagedObject {
         get { return Location.init(rawValue: Int(locationEnum)) ?? .none}
         set { locationEnum = Int16(newValue.rawValue)}
     }
-    
-    
     
     var expirationString : String {
         if expirationDate == nil {
@@ -101,3 +100,4 @@ extension Location: CaseIterable {
         }
     }
 }
+
