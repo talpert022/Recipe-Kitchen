@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Food" representedClassName=".Food" syncable="YES">
-        <attribute name="couldInclude" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="enteredDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="expirationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="inRecipe" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
@@ -16,7 +15,7 @@
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Food" positionX="-45" positionY="0" width="128" height="134"/>
+        <element name="Food" positionX="-45" positionY="0" width="128" height="133"/>
         <element name="SavedRecipe" positionX="-45" positionY="54" width="128" height="89"/>
     </elements>
 </model>

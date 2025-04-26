@@ -1,9 +1,9 @@
 //
 //  Food+CoreDataProperties.swift
-//  Recipe Kitchen
+//  Cook_For_One
 //
-//  Created by Tommy Alpert on 12/17/21.
-//  Copyright © 2021 Tommy Alpert. All rights reserved.
+//  Created by Tommy Alpert on 10/19/20.
+//  Copyright © 2020 Tommy Alpert. All rights reserved.
 //
 //
 
@@ -19,11 +19,10 @@ extension Food {
 
     @NSManaged public var enteredDate: Date
     @NSManaged public var expirationDate: Date?
-    @NSManaged public var inRecipe: Bool
     @NSManaged public var label: String
     @NSManaged public var locationEnum: Int16
     @NSManaged public var quantity: String?
-    @NSManaged public var couldInclude: Bool
+    @NSManaged public var inRecipe: Bool
 
 }
 

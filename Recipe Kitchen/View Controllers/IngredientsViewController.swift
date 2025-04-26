@@ -45,7 +45,7 @@ class IngredientsViewController: UIViewController {
         ingredientTableView.dataSource = self
         
         for food in fetchedRC.fetchedObjects ?? [] {
-            if food.inRecipe || food.couldInclude {
+            if food.inRecipe {
                 ingredientsCounter += 1
             }
         }
@@ -85,7 +85,7 @@ class IngredientsViewController: UIViewController {
         kitchenButton.layer.shadowRadius = 8
         kitchenButton.layer.shadowOpacity = 0.5
     }
-
+    
     private func refresh() {
         let request = Food.fetchRequest() as NSFetchRequest<Food>
         let sort = NSSortDescriptor(key: "enteredDate", ascending: false)
@@ -172,6 +172,7 @@ class IngredientsViewController: UIViewController {
             assert(false, "No such segment exists")
         }
     }
+    
 }
 
 // MARK: - Ingredients table view
@@ -204,8 +205,7 @@ extension IngredientsViewController : UITableViewDelegate, UITableViewDataSource
             food = fetchedRC.object(at: indexPath)
         }
         
-        cell.delegate = self
-        cell.displayCell(food: food, indexPath: indexPath)
+        cell.displayCell(food: food)
         cell.warningLabel.isHidden = showWarning
         
         let greenView = UIView()
@@ -220,55 +220,29 @@ extension IngredientsViewController : UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        mustIncludeSelected(indexPath: indexPath)
+        
+        let ingredient : Food
+        if expiringSoonSelected {
+            ingredient = expiringSoon[indexPath.row]
+        } else if expiredSelected {
+            ingredient = expired[indexPath.row]
+        } else {
+            ingredient = fetchedRC.object(at: indexPath)
+        }
+        
+        ingredientsCounter += ingredient.inRecipe ? -1 : 1
+        ingredient.inRecipe = !ingredient.inRecipe
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+        // Try in the future to only change property once save button is hit
+        
+        saveButton.setTitle("Create Recipe: \(ingredientsCounter) items", for: .normal)
+        
     }
     
 }
 
-// MARK: - Custom Protocols
-extension IngredientsViewController : AddViewControllerProtocol, AddMultipleIngredientsProtocol, IngredientButtonsProtocol {
-    
-    func couldIncludeSelected(indexPath : IndexPath) {
-        
-        let ingredient : Food
-        if expiringSoonSelected {
-            ingredient = expiringSoon[indexPath.row]
-        } else if expiredSelected {
-            ingredient = expired[indexPath.row]
-        } else {
-            ingredient = fetchedRC.object(at: indexPath)
-        }
-        
-        if !ingredient.inRecipe {
-            ingredientsCounter += ingredient.couldInclude ? -1 : 1
-        }
-        ingredient.couldInclude = !ingredient.couldInclude
-        ingredientTableView.reloadRows(at: [indexPath], with: .automatic)
-        // TODO: Try in the future to only change property once save button is hit
-        
-        saveButton.setTitle("Create Recipe: \(ingredientsCounter) items", for: .normal)
-    }
-    
-    func mustIncludeSelected(indexPath : IndexPath) {
-        
-        let ingredient : Food
-        if expiringSoonSelected {
-            ingredient = expiringSoon[indexPath.row]
-        } else if expiredSelected {
-            ingredient = expired[indexPath.row]
-        } else {
-            ingredient = fetchedRC.object(at: indexPath)
-        }
-        
-        if !ingredient.couldInclude {
-            ingredientsCounter += ingredient.inRecipe ? -1 : 1
-        }
-        ingredient.inRecipe = !ingredient.inRecipe
-        ingredientTableView.reloadRows(at: [indexPath], with: .automatic)
-        // TODO: Try in the future to only change property once save button is hit
-        
-        saveButton.setTitle("Create Recipe: \(ingredientsCounter) items", for: .normal)
-    }
+// MARK: - Handle add
+extension IngredientsViewController : AddViewControllerProtocol, AddMultipleIngredientsProtocol {
     
     /// Used to add one ingredient with entire range of properties from add ingredeint view
     func addFoodItem(label: String, quantity: String?, expoDate: Date?, location: Int) {
