@@ -26,6 +26,7 @@ class moreRecipesCell: UICollectionViewCell {
         if !isLoading {
             isLoading = true
             plusImageView.isHidden = true
+            loadingView.animationSpeed = 2.7
             addSubview(loadingView)
             loadingView.play()
         }

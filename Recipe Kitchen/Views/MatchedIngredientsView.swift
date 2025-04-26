@@ -68,6 +68,7 @@ struct MatchedIngredientsView_Previews: PreviewProvider {
 
 struct UnmatchedSection: View {
     let matchedItems : [String : [String]]
+    @State private var showingAlert = false
     
     var body: some View {
         let recipeIngredients = matchedItems.map { $0.key }
@@ -80,7 +81,7 @@ struct UnmatchedSection: View {
                         Text(ingr)
                         Spacer()
                         Button {
-                            
+                            self.showingAlert = true
                         } label: {
                             Text("Add to Grocery List")
                                 .font(.custom("Avenir", size: 12.0))
@@ -88,6 +89,13 @@ struct UnmatchedSection: View {
                     }
                 }
             }
+        }
+        .alert(isPresented: $showingAlert) {
+            Alert(
+                title: Text(verbatim: "Sorry!"),
+                message: Text(verbatim: "Grocery Lists are not supported yet. We are working hard on fixing this :)"),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }

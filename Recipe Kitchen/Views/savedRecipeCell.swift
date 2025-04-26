@@ -92,7 +92,7 @@ class savedRecipeCell: UITableViewCell {
     }
     
     private func configureSavedRecipeCell() {
-        recipeTitle.text = recipe.title ?? ""
+        recipeTitle.text = savedRecipeToDisplay!.title ?? ""
         recipeImage.layer.cornerRadius = 5
         savedButton.image = UIImage(systemName: "heart.fill")
         let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.savedImageTapped))

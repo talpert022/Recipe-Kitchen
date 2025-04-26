@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lsz-lg-5ed">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lsz-lg-5ed">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -13,7 +13,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController interfaceStyle="light" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Recipe_Kitchen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Recipe_Kitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,13 +23,13 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAL-ra-mbV">
-                                <rect key="frame" x="175" y="96" width="24" height="20.5"/>
+                                <rect key="frame" x="175" y="100" width="24" height="20.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.64311322773972601" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GmJ-eb-Z2F">
-                                <rect key="frame" x="24" y="129" width="370" height="203"/>
+                                <rect key="frame" x="24" y="133" width="370" height="199"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="Qdo-cD-NGh" customClass="LeftAlignFlowLayout" customModule="Recipe_Kitchen" customModuleProvider="target">
                                     <size key="itemSize" width="145" height="55"/>
@@ -70,7 +70,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9u-NU-kTt" customClass="addButton" customModule="Recipe_Kitchen" customModuleProvider="target">
-                                <rect key="frame" x="294" y="89.5" width="100" height="33"/>
+                                <rect key="frame" x="294" y="93.5" width="100" height="33"/>
                                 <color key="backgroundColor" red="1" green="0.58823529411764708" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="displayP3"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
@@ -194,13 +194,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmx-JC-eQX">
-                                <rect key="frame" x="24" y="93" width="148" height="26"/>
+                                <rect key="frame" x="24" y="97" width="148" height="26"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="21"/>
                                 <color key="textColor" red="0.64386698919999996" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GcI-hl-Nr1">
-                                <rect key="frame" x="24" y="52" width="25" height="25"/>
+                                <rect key="frame" x="24" y="56" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="81Q-7m-Dmh"/>
                                     <constraint firstAttribute="width" constant="25" id="Bzb-df-kFf"/>
@@ -211,7 +211,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="MI8-AZ-ph1">
-                                <rect key="frame" x="249" y="44" width="200" height="41"/>
+                                <rect key="frame" x="249" y="48" width="200" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="kRM-CK-p1G"/>
                                     <constraint firstAttribute="width" constant="200" id="tVn-WV-2Bm"/>
@@ -300,11 +300,11 @@
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" hidesBottomBarWhenPushed="YES" id="dj0-aR-J9P" customClass="IngredientsViewController" customModule="Recipe_Kitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5C0-dz-4d3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOs-0a-gZf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m74-rx-yhl">
                                         <rect key="frame" x="20" y="20" width="248" height="30"/>
@@ -328,11 +328,11 @@
                                         </connections>
                                     </segmentedControl>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tjg-FG-cvf">
-                                        <rect key="frame" x="0.0" y="137" width="414" height="635"/>
+                                        <rect key="frame" x="0.0" y="137" width="414" height="679"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ingredientCell" rowHeight="60" id="paj-qI-40d" customClass="ingredientCell" customModule="Recipe_Kitchen" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="414" height="60"/>
+                                                <rect key="frame" x="0.0" y="50" width="414" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="paj-qI-40d" id="8lM-8a-g0L">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -377,7 +377,7 @@
                                         </prototypes>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmq-pl-a2X">
-                                        <rect key="frame" x="0.0" y="772" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="816" width="414" height="70"/>
                                         <color key="backgroundColor" red="0.0" green="0.93535958900000005" blue="1" alpha="0.9003371147" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="LGc-Oc-U32"/>
@@ -389,7 +389,7 @@
                                         </connections>
                                     </button>
                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FLY-z0-foc">
-                                        <rect key="frame" x="69.5" y="374.5" width="275" height="160"/>
+                                        <rect key="frame" x="69.5" y="396.5" width="275" height="160"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌮🗣 You don't have any food right now. Tell us what's in your kitchen 🗣🍕" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="XMy-s5-Zci">
                                                 <rect key="frame" x="0.0" y="0.0" width="275" height="100"/>
@@ -493,10 +493,6 @@
                             <constraint firstItem="fKj-Wh-SB6" firstAttribute="trailing" secondItem="YOs-0a-gZf" secondAttribute="trailing" id="bmT-qh-Xvz"/>
                             <constraint firstItem="YOs-0a-gZf" firstAttribute="centerX" secondItem="5C0-dz-4d3" secondAttribute="centerX" id="ql4-PS-7D3"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Ofp-vT-Jaj" appends="YES" id="uwe-gQ-KyN"/>
-                            <outletCollection property="gestureRecognizers" destination="Ofp-vT-Jaj" appends="YES" id="7wX-4d-Tf4"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Y7W-tu-C7J"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -511,11 +507,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="je3-ez-drI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Ofp-vT-Jaj">
-                    <connections>
-                        <action selector="dismiss:" destination="dj0-aR-J9P" id="dXU-B9-CZU"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4279.7101449275369" y="-598.66071428571422"/>
         </scene>
@@ -544,7 +535,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJE-6R-ODh">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="765"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -580,11 +571,11 @@
             <objects>
                 <viewController id="a4a-Hq-3p3" customClass="FiltersViewController" customModule="Recipe_Kitchen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dxM-tg-fAi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xHY-E2-WxF">
-                                <rect key="frame" x="0.0" y="56" width="414" height="726"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="770"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hGr-qU-jzT" userLabel="Content view">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="785"/>
@@ -828,7 +819,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="IIj-Db-wec"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dp5-2G-CV9">
-                                <rect key="frame" x="10" y="782" width="394" height="60"/>
+                                <rect key="frame" x="10" y="826" width="394" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Fg6-RX-GAd"/>
@@ -889,7 +880,7 @@
                     <tabBarItem key="tabBarItem" title="Recipes" image="recipe" selectedImage="recipe-selected" id="QaQ-V4-szn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EcW-oL-yjc">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

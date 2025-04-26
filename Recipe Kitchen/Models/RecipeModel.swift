@@ -39,7 +39,7 @@ class RecipeModel {
         AF.request(stringUrl, method: .get, parameters: params, encoding: URLEncoding(arrayEncoding: .noBrackets), headers: nil).validate()
             .responseDecodable(of: Hits.self) { (response) in
                 
-                print(response.request)
+                // print(response.request)
                 
                 guard let recipeService = response.value else {
                     self.delegate?.invalidRecipeSearch()
@@ -56,7 +56,6 @@ class RecipeModel {
         }
     }
     
-    // TODO: Security???????
     // Retrieves recipes from the next link of a current recipe GET request to support pagination
     // Competion handler ends the more recipe cell loading animation
     func getMoreRecipes(stringUrl : String, completionHandler: @escaping () -> Void) {
@@ -64,7 +63,7 @@ class RecipeModel {
         AF.request(stringUrl, method: .get, encoding: URLEncoding(arrayEncoding: .noBrackets), headers: nil).validate()
             .responseDecodable(of: Hits.self) { (response) in
                 
-                print(response.request)
+                // print(response.request)
                 
                 guard let recipeService = response.value else {
                     self.delegate?.invalidRecipeSearch()
@@ -93,8 +92,8 @@ class RecipeModel {
         AF.request(stringUrl, method: .get, encoding: URLEncoding(arrayEncoding: .noBrackets)).validate()
             .responseDecodable(of: Hit.self) { (response) in
                 
-                print(response.request)
-                print(response)
+                //print(response.request)
+                //print(response)
                 
                 guard let recipe = response.value?.recipe as? Recipe else {
                     print("Response not decoded as recipe")
