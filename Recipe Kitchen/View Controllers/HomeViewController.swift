@@ -27,15 +27,13 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var filtersCollectionView: UICollectionView!
     @IBOutlet weak var addIngredientStack: UIStackView!
     
-    private let NumPossibleRecipes : Int = 20
-    
     let recipeData = recipeDataSource()
     let recipeDelegate = recipeCollectionViewDelegate()
     
     let filtersData = filtersDataSource()
     let filtersDelegateSource = filtersDelegate()
     
-    var network = RecipeModel()
+    var model = RecipeModel()
     
     var selectedFood : String?
     var ingredients : [Food] = []
@@ -72,7 +70,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         filtersCollectionView.backgroundColor = recipeBackground.backgroundColor?.withAlphaComponent(0.01)
         
         // Additional setup
-        network.delegate = self
+        model.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +104,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let sort = NSSortDescriptor(key: "enteredDate", ascending: false)
         let sort1 = NSSortDescriptor(key: "inRecipe", ascending: false)
         let sort2 = NSSortDescriptor(key: "couldInclude", ascending: false)
-        request.sortDescriptors = [sort2, sort1, sort]
+        request.sortDescriptors = [sort, sort1, sort2]
         
         do {
             fetchedRC = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
@@ -195,12 +193,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
                 Global.params["q"] = searchStr
                 
-                self?.network.getRecipes(params: Global.params)
+                self?.model.getRecipes(params: Global.params)
                 // If theres no 'q' parameter RecipeModel won't return anything
                 
             }
-            
-            // TODO: Where I would initialize some spinner while process is happening
         }
         
     }
@@ -218,69 +214,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 }
             }
             
-            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-                if couldIncludeIngrs.isEmpty {
-                    Global.params["q"] = searchStr
-                    self?.network.getRecipes(params: Global.params)
-                } else {
-                    self?.recursiveSubset(searchStr: searchStr, [couldIncludeIngrs])
-                }
-            }
+            
         }
     }
     
-    private func recursiveSubset(searchStr : String, _ queue: [[String]]) {
+    private func recursiveSubset(ingr: [String], searchStr : String, numExclude: Int) {
         
-        if queue.isEmpty {
+        if numExclude == ingr.count {
             return
         }
         
-        let group = DispatchGroup()
-        var possibleRecipes : [Recipe] = []
         
-        for combination in queue {
-            // Add ingredients to search string and make network call
-            var currentSearchStr = searchStr
-            for food in combination {
-                currentSearchStr += " \(food)"
-            }
-            group.enter()
-            self.network.getPossibleRecipes(params: &Global.params, ingredients: currentSearchStr) { result in
-                switch result {
-                case .failure(let error):
-                    print(error)
-                case .success(let recipes):
-                    possibleRecipes.append(contentsOf: recipes)
-                    if possibleRecipes.count >= self.NumPossibleRecipes {
-                        self.recipesRecieved(possibleRecipes)
-                        return
-                    }
-                }
-                group.leave()
-            }
-        }
-        
-        // Generate new possible ingredient combinations when previous combos don't exit function
-        group.notify(queue: .main, execute: {
-            var comboVisited : [[String]] = []
-            var newQueue : [[String]] = []
-            
-            for combination in queue {
-                for (idx, _) in combination.enumerated() {
-                    var copyOfCombo = combination
-                    let _ = copyOfCombo.remove(at: idx)
-                    
-                    if comboVisited.contains(copyOfCombo) {
-                        continue
-                    } else {
-                        comboVisited.append(copyOfCombo)
-                        newQueue.append(copyOfCombo)
-                    }
-                }
-            }
-            
-            self.recursiveSubset(searchStr: searchStr, newQueue)
-        })
     }
     
     // MARK: - Navigation
@@ -417,7 +361,7 @@ extension HomeViewController : AddViewControllerProtocol, FiltersControllerProto
         noResultsLabel.isHidden = true
         
         if ingredients.count != 0 {
-            self.network.getRecipes(params: Global.params)
+            self.model.getRecipes(params: Global.params)
             addIngredientStack.isHidden = true
         } else { 
             addIngredientStack.isHidden = false
@@ -435,7 +379,7 @@ extension HomeViewController : AddViewControllerProtocol, FiltersControllerProto
             return
         }
         
-        self.network.getMoreRecipes(stringUrl: nextPageString, completionHandler: completionHandler)
+        self.model.getMoreRecipes(stringUrl: nextPageString, completionHandler: completionHandler)
     }
     
     /// Used to add multiple ingredients with just a title from the build recipe view
@@ -488,7 +432,7 @@ extension HomeViewController : AddViewControllerProtocol, FiltersControllerProto
         }
         
         self.noResultsLabel.isHidden = true
-        self.network.getRecipes(params: Global.params)
+        self.model.getRecipes(params: Global.params)
     }
     
     func goToRecipePage(indexPath : IndexPath) {
@@ -542,7 +486,7 @@ extension HomeViewController : AddViewControllerProtocol, FiltersControllerProto
         
         // Async load recipes with all the search parameters from food items
         Global.params.removeValue(forKey: "q")
-        getRecipeData2()
+        getRecipeData()
         
         addIngredientStack.isHidden = !(ingredients.count == 0)
         recipeCollectionView.isHidden = ingredients.count == 0
