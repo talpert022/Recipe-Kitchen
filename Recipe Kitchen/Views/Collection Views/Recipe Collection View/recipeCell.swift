@@ -131,7 +131,7 @@ class recipeCell: UICollectionViewCell {
             var matched = false
             for ingr in myItems {
                 if myIngredients[ingr] == false {
-                    if recipeIngr.text != nil && recipeIngr.text!.contains("\(ingr.lowercased())") {
+                    if recipeIngr.text != nil && recipeIngr.text!.lowercased().contains("\(ingr.lowercased())") {
                         matched = true
                         matched_Ingredients[recipeIngr.text!] = matched_Ingredients[recipeIngr.text!, default: []] + [ingr]
                         ownedIngredientsCount += 1
