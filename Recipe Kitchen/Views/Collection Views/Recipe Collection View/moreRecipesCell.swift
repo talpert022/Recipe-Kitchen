@@ -13,7 +13,7 @@ class moreRecipesCell: UICollectionViewCell {
     
     static let reuseIdentifier = String(describing: moreRecipesCell.self)
     
-    private let loadingView = AnimationView()
+    private let loadingView = LottieAnimationView()
     private var isLoading : Bool = false
     
     @IBOutlet weak var plusImageView: UIImageView!
@@ -51,7 +51,7 @@ class moreRecipesCell: UICollectionViewCell {
     
     public func configure() {
         let animationViewFilePath = getLoadingAnimationFilePath()
-        loadingView.animation = Animation.filepath(animationViewFilePath, animationCache: nil)
+        loadingView.animation = LottieAnimation.filepath(animationViewFilePath, animationCache: nil)
         loadingView.loopMode = .loop
         loadingView.frame = plusImageView.frame
         plusImageView.isHidden = false
